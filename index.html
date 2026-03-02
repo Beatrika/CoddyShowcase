@@ -794,14 +794,37 @@
       cursor: default;
       box-shadow: none;
     }
+    .excellent-layout{
+      display:grid;
+      grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);
+      gap:18px;
+      align-items:center;
+      margin:8px 0 16px;
+    }
     @media (max-width: 900px){
       .excellent-student-card{
         flex: 0 0 calc(50% - 8px);
       }
     }
+    @media (max-width: 768px){
+      .excellent-layout{
+        grid-template-columns:1fr;
+        gap:14px;
+      }
+    }
     @media (max-width: 640px){
       .excellent-student-card{
         flex: 0 0 100%;
+      }
+      .excellent-layout{
+        margin:6px 0 12px;
+      }
+      .excellent-slider{
+        flex-direction:column;
+        align-items:stretch;
+      }
+      .excellent-arrow{
+        align-self:center;
       }
     }
     .excellent-month-tabs{
@@ -1137,19 +1160,17 @@
         <span class="pill">Excellent students</span>
         <div class="card-title">Gallery</div>
         <p style="margin-bottom:10px;font-size:14px;color:#475569;">
-          Here you’ll find short spotlights for our standout Coddy students — from different programs and months.
+          Short spotlights for standout Coddy students nga Kosova dhe Tirana.
         </p>
 
-        <div style="display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:18px;align-items:center;margin:8px 0 16px;">
+        <div class="excellent-layout">
           <div>
             <h3 style="font-size:16px;margin-bottom:6px;">What is an excellent student?</h3>
             <p style="font-size:14px;color:#475569;margin-bottom:8px;">
-              Our excellent students are curious, consistent and kind. They love to explore new technologies,
-              finish their projects with care and help their classmates during Coddy lessons.
+              Excellent students are curious, consistent and kind. They try new technologies, përfundojnë projektet me kujdes dhe ndihmojnë shokët gjatë orës.
             </p>
             <p style="font-size:14px;color:#475569;margin-bottom:0;">
-              Every month we highlight students from Tirana and Kosova who show great progress in coding,
-              creativity and teamwork — from Scratch and Roblox to web development and AI.
+              Çdo muaj përzgjedhim nxënës nga Tirana dhe Kosova që tregojnë progres të madh në kodim, kreativitet dhe punë në grup — nga Scratch dhe Roblox te web development dhe AI.
             </p>
           </div>
           <div>
