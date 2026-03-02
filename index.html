@@ -1,0 +1,1678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Coddy Showcase</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#1e3a8a" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root{
+      --bg-gradient: linear-gradient(180deg,#e0f2fe,#bfdbfe);
+      --primary: #2563eb;
+      --primary-soft: #60a5fa;
+      --primary-dark: #1e3a8a;
+      --text-main: #0f172a;
+      --text-soft: #475569;
+      --card-bg: #ffffff;
+      --shadow-soft: 0 18px 60px rgba(15,23,42,.16);
+      --radius-xl: 30px;
+    }
+
+    html{ -webkit-text-size-adjust: 100%; }
+    body{
+      font-family: Poppins, sans-serif;
+      overflow-x: hidden;
+      background: var(--bg-gradient);
+      color: var(--text-main);
+      min-height: 100vh;
+    }
+
+    html{ scroll-behavior: smooth; }
+
+    main{
+      max-width: 1120px;
+      margin: auto;
+      padding: 80px 20px 60px;
+    }
+
+    section{ margin-bottom: 90px; }
+
+    h2{
+      font-size: 32px;
+      color: var(--primary-dark);
+      margin-bottom: 18px;
+      letter-spacing: .02em;
+    }
+
+    p{ line-height: 1.6; }
+
+    /* Header / Nav */
+    header{
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(15,23,42,.8);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(148,163,184,.25);
+    }
+
+    .nav{
+      max-width: 1120px;
+      margin: auto;
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand{
+      color: #f9fafb;
+      font-weight: 700;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand img{
+      width: 30px;
+      height: 30px;
+    }
+
+    nav a{
+      color: #e0f2fe;
+      text-decoration: none;
+      margin-left: 10px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 14px;
+      transition: background .2s, color .2s, transform .15s;
+    }
+
+    nav a:hover{
+      background: rgba(148,163,184,.3);
+      transform: translateY(-1px);
+    }
+
+    nav a.active{
+      background: #f9fafb;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .menu-toggle{
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: none;
+      background: rgba(255,255,255,.1);
+      color: #f9fafb;
+      border-radius: 12px;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+      padding: 0;
+    }
+    .menu-toggle span{
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: currentColor;
+      border-radius: 1px;
+    }
+
+    /* Hero / Home */
+    #home{
+      background: radial-gradient(circle at top left,#eff6ff,#ffffff);
+      border-radius: var(--radius-xl);
+      padding: 48px 44px;
+      display: grid;
+      grid-template-columns: 1.45fr 1fr;
+      gap: 40px;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #home::before{
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle,#bfdbfe55,#93c5fd00);
+      top: -80px;
+      right: -80px;
+      pointer-events: none;
+    }
+
+    .hero-badge-row{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 14px;
+      align-items: center;
+    }
+
+    .hero-badge{
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(37,99,235,.08);
+      color: var(--primary);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+    }
+
+    .hero-badge span.flag{
+      font-size: 16px;
+    }
+
+    .hero-tagline{
+      font-size: 12px;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+    }
+
+    .hero-title{
+      font-size: 44px;
+      font-weight: 800;
+      margin-top: 4px;
+      line-height: 1.05;
+    }
+
+    .hero-title span{
+      color: var(--primary);
+      text-shadow: 0 10px 30px rgba(37,99,235,.35);
+    }
+
+    .hero-sub{
+      margin: 20px 0 24px;
+      color: var(--text-soft);
+      font-size: 16px;
+    }
+
+    .hero-actions{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .btn{
+      padding: 13px 26px;
+      border-radius: 999px;
+      border: none;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform .15s, box-shadow .15s, background .15s, color .15s;
+    }
+
+    .btn.primary{
+      background: linear-gradient(135deg,var(--primary),var(--primary-soft));
+      color: #ffffff;
+      box-shadow: 0 15px 40px rgba(37,99,235,.45);
+    }
+
+    .btn.primary:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 20px 55px rgba(37,99,235,.55);
+    }
+
+    .btn.secondary{
+      background: #e0f2fe;
+      color: var(--primary-dark);
+    }
+
+    .btn.secondary:hover{
+      background: #dbeafe;
+      transform: translateY(-1px);
+    }
+
+    .hero-stats{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .stat{
+      min-width: 90px;
+    }
+
+    .stat strong{
+      display: block;
+      font-size: 20px;
+      color: var(--primary-dark);
+    }
+
+    .stat span{
+      font-size: 12px;
+      color: #64748b;
+    }
+
+    .hero-side{
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-img{
+      width: 100%;
+      border-radius: 22px;
+      box-shadow: 0 18px 55px rgba(15,23,42,.35);
+      object-fit: cover;
+      max-height: 320px;
+    }
+
+    .hero-floating{
+      position: absolute;
+      left: -18px;
+      bottom: 16px;
+      background: #0f172a;
+      color: #e5e7eb;
+      padding: 10px 14px;
+      border-radius: 16px;
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 16px 40px rgba(15,23,42,.7);
+    }
+
+    .hero-avatars{
+      display: flex;
+    }
+
+    .hero-avatars span{
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      border: 2px solid #0f172a;
+      background: #1d4ed8;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: #e5e7eb;
+      margin-left: -6px;
+    }
+
+    .hero-avatars span:first-child{ margin-left: 0; }
+
+    .hero-floating small{
+      display: block;
+      font-size: 10px;
+      color: #9ca3af;
+    }
+
+    /* Sections shared */
+    .section-header-row{
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      margin-bottom: 20px;
+    }
+
+    .section-kicker{
+      font-size: 13px;
+      color: #64748b;
+    }
+
+    .grid{
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+      gap: 20px;
+    }
+
+    .card{
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 16px 48px rgba(15,23,42,.16);
+      position: relative;
+      overflow: hidden;
+      transition: transform .2s, box-shadow .2s, border .2s;
+      border: 1px solid rgba(148,163,184,.22);
+    }
+
+    .card:hover{
+      transform: translateY(-4px);
+      box-shadow: 0 22px 65px rgba(15,23,42,.26);
+      border-color: rgba(37,99,235,.35);
+    }
+
+    .card img{
+      width: 100%;
+      border-radius: 14px;
+      margin-bottom: 12px;
+      max-height: 180px;
+      object-fit: cover;
+    }
+
+    .pill{
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #eff6ff;
+      color: #1d4ed8;
+      font-size: 11px;
+      margin-bottom: 6px;
+    }
+
+    .card-title{
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: var(--primary-dark);
+      font-size: 15px;
+    }
+
+    .card p{
+      font-size: 14px;
+      color: var(--text-soft);
+    }
+
+    /* Timeline / About */
+    .timeline{
+      display: grid;
+      gap: 14px;
+    }
+
+    .timeline-item{
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 10px 14px;
+      align-items: flex-start;
+    }
+
+    .timeline-dot{
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      background: var(--primary);
+      margin-top: 5px;
+      box-shadow: 0 0 0 6px rgba(37,99,235,.18);
+    }
+
+    .timeline-body h3{
+      font-size: 15px;
+      margin-bottom: 2px;
+      color: var(--primary-dark);
+    }
+
+    .timeline-body p{
+      font-size: 14px;
+      color: var(--text-soft);
+    }
+
+    /* Reviews slider */
+    .slider{ overflow: hidden; }
+
+    .track{
+      display: flex;
+      transition: transform .55s cubic-bezier(.22,.61,.36,1);
+    }
+
+    .review{
+      min-width: 100%;
+      background: var(--card-bg);
+      padding: 32px 28px 30px;
+      border-radius: 22px;
+      text-align: left;
+      box-shadow: 0 18px 60px rgba(15,23,42,.18);
+      border: 1px solid rgba(148,163,184,.24);
+    }
+
+    .review-header{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .review h3{
+      color: var(--primary-dark);
+      font-size: 18px;
+    }
+
+    .review small{
+      color: #64748b;
+      font-size: 13px;
+    }
+
+    .review-quote{
+      font-size: 15px;
+      color: var(--text-soft);
+      margin-top: 12px;
+    }
+
+    .stars{
+      color: #facc15;
+      font-size: 18px;
+    }
+
+    .controls{
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+      gap: 6px;
+    }
+
+    .controls button{
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      border: none;
+      background: #bfdbfe;
+      cursor: pointer;
+      transition: width .2s, background .2s, transform .2s;
+    }
+
+    .controls button.active{
+      width: 24px;
+      background: var(--primary);
+      transform: translateY(-1px);
+    }
+
+    .slider-wrapper{
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 8px;
+    }
+    .slider-wrapper .slider{
+      flex: 1;
+      min-width: 0;
+    }
+    .slider-arrow{
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 2px solid var(--primary);
+      background: #fff;
+      color: var(--primary);
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .2s, color .2s, transform .2s;
+      box-shadow: 0 4px 12px rgba(15,23,42,.1);
+    }
+    .slider-arrow:hover{
+      background: var(--primary);
+      color: #fff;
+      transform: scale(1.05);
+    }
+    .slider-arrow:active{ transform: scale(0.98); }
+
+    /* Contact / Get in touch – professional */
+    @keyframes contact-card-in{
+      from{ opacity: 0; transform: translateY(10px); }
+      to{ opacity: 1; transform: translateY(0); }
+    }
+
+    #contact{
+      background: linear-gradient(165deg, #dbeafe 0%, #e0f2fe 45%, #bae6fd 100%);
+      border-radius: var(--radius-xl);
+      padding: 48px 36px 40px;
+      border: 1px solid rgba(59,130,246,.2);
+      box-shadow: 0 20px 56px rgba(37,99,235,.12), inset 0 1px 0 rgba(255,255,255,.4);
+      position: relative;
+    }
+    #contact::before{
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background-image: radial-gradient(circle at 20% 30%, rgba(255,255,255,.25) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 70%, rgba(255,255,255,.2) 0%, transparent 45%);
+      pointer-events: none;
+    }
+
+    #contact .section-header-row{ margin-bottom: 28px; position: relative; z-index: 1; }
+    #contact h2{ margin-bottom: 6px; }
+    #contact .section-kicker{ font-size: 15px; color: var(--text-soft); }
+    #contact .contact-emoji-strip,
+    #contact .contact-cta-wrap,
+    #contact .contact-cards{ position: relative; z-index: 1; }
+
+    .contact-emoji-strip{
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .contact-emoji-strip span{
+      font-size: 20px;
+      opacity: .85;
+    }
+
+    .contact-cta-wrap{
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .contact-cta-wrap .btn.primary{
+      font-size: 16px;
+      padding: 12px 28px;
+      border-radius: 999px;
+      border: 1px solid rgba(37,99,235,.25);
+      box-shadow: 0 8px 24px rgba(37,99,235,.15);
+      transition: box-shadow .2s ease, transform .2s ease;
+    }
+    .contact-cta-wrap .btn.primary:hover{
+      box-shadow: 0 10px 28px rgba(37,99,235,.22);
+      transform: translateY(-1px);
+    }
+
+    .contact-layout{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .contact-main{
+      flex: 1 1 0;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .contact-cards{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .contact-extra{
+      grid-column: span 2;
+      background: rgba(255,255,255,.92);
+      border-radius: 16px;
+      padding: 24px 28px;
+      box-shadow: 0 8px 28px rgba(15,23,42,.1), 0 0 0 1px rgba(255,255,255,.5) inset;
+      border: 1px solid rgba(59,130,246,.15);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      animation: contact-card-in .4s ease backwards;
+      animation-delay: .25s;
+    }
+    .contact-extra-title{
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 10px;
+    }
+    .contact-extra-text{
+      font-size: 14px;
+      color: var(--text-soft);
+      line-height: 1.6;
+      margin: 0;
+    }
+    @media (max-width: 900px){
+      .contact-extra{ grid-column: 1 / -1; }
+    }
+    .contact-card{
+      background: rgba(255,255,255,.95);
+      border-radius: 16px;
+      padding: 22px 20px;
+      text-align: center;
+      box-shadow: 0 8px 28px rgba(15,23,42,.08), 0 0 0 1px rgba(255,255,255,.6) inset;
+      border: 1px solid rgba(59,130,246,.12);
+      transition: transform .2s ease, box-shadow .2s ease;
+      animation: contact-card-in .4s ease backwards;
+    }
+    .contact-card:nth-child(1){ animation-delay: .05s; }
+    .contact-card:nth-child(2){ animation-delay: .1s; }
+    .contact-card:nth-child(3){ animation-delay: .15s; }
+    .contact-card:nth-child(4){ animation-delay: .2s; }
+    .contact-card:hover{
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(15,23,42,.08);
+    }
+    .contact-card .contact-icon{
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 12px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      background: #f1f5f9;
+      border: 1px solid rgba(148,163,184,.25);
+      transition: background .2s ease;
+    }
+    .contact-card:hover .contact-icon{
+      background: #e2e8f0;
+    }
+
+    .contact-card .contact-label{
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 8px;
+      display: block;
+    }
+    .contact-card .contact-label .contact-flag{
+      margin-left: 4px;
+      font-size: 1.1em;
+    }
+    .contact-card a{
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      word-break: break-word;
+    }
+    .contact-card a:hover{ text-decoration: underline; }
+    .contact-card .contact-address{
+      font-size: 13px;
+      color: var(--text-soft);
+      line-height: 1.45;
+      margin-top: 8px;
+    }
+    .contact-card .contact-cta-btn{
+      margin-top: 12px;
+      padding: 8px 16px;
+      font-size: 13px;
+      border-radius: 999px;
+      border: 1px solid rgba(37,99,235,.3);
+      background: rgba(37,99,235,.06);
+      color: var(--primary-dark);
+      cursor: pointer;
+      transition: background .2s ease, color .2s ease;
+    }
+    .contact-card .contact-cta-btn:hover{
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .contact-photo{
+      position: relative;
+      overflow: hidden;
+      border-radius: 22px;
+      box-shadow: 0 18px 55px rgba(15,23,42,.24);
+      border: 1px solid rgba(148,163,184,.28);
+      min-height: 220px;
+      max-height: 260px;
+      background:#020617;
+    }
+    .contact-photo img{
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .contact-photo-badge{
+      position: absolute;
+      left: 14px;
+      bottom: 14px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(15,23,42,.85);
+      color: #e5e7eb;
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    /* Excellent students */
+    .excellent-card{
+      margin-top: 10px;
+      cursor: pointer;
+      border: 1px solid rgba(37,99,235,.2);
+      box-shadow: 0 16px 40px rgba(15,23,42,.12);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .excellent-card:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 22px 55px rgba(15,23,42,.18);
+    }
+    .excellent-panel{
+      margin-top: 18px;
+      display: none;
+    }
+    .excellent-panel.active{
+      display: block;
+    }
+    .excellent-slider{
+      position: relative;
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .excellent-track{
+      overflow: hidden;
+      flex: 1;
+    }
+    .excellent-track-inner{
+      display: flex;
+      gap: 14px;
+      transition: transform .25s ease;
+    }
+    .excellent-student-card{
+      min-width: 0;
+      flex: 0 0 calc(25% - 11px);
+    }
+    .excellent-arrow{
+      border: none;
+      background: rgba(15,23,42,.75);
+      color: #e5e7eb;
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      box-shadow: 0 8px 20px rgba(15,23,42,.4);
+    }
+    .excellent-arrow:disabled{
+      opacity: .4;
+      cursor: default;
+      box-shadow: none;
+    }
+    @media (max-width: 900px){
+      .excellent-student-card{
+        flex: 0 0 calc(50% - 8px);
+      }
+    }
+    @media (max-width: 640px){
+      .excellent-student-card{
+        flex: 0 0 100%;
+      }
+    }
+    .excellent-month-tabs{
+      display: inline-flex;
+      gap: 6px;
+      padding: 4px;
+      border-radius: 999px;
+      background: rgba(15,23,42,.04);
+      border: 1px solid rgba(148,163,184,.5);
+      margin: 8px 0 14px;
+    }
+    .excellent-month-btn{
+      border: none;
+      background: transparent;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      padding: 4px 10px;
+      border-radius: 999px;
+      cursor: pointer;
+      color: #64748b;
+      transition: background .16s ease, color .16s ease;
+    }
+    .excellent-month-btn.active{
+      background: #1d4ed8;
+      color: #e5e7eb;
+      box-shadow: 0 8px 20px rgba(37,99,235,.4);
+    }
+
+    /* Footer */
+    footer{
+      text-align: center;
+      padding: 24px 16px 32px;
+      font-size: 13px;
+      background: rgba(15,23,42,.9);
+      backdrop-filter: blur(18px);
+      border-top: 1px solid rgba(148,163,184,.35);
+      color: #e5e7eb;
+      margin-top: 32px;
+    }
+
+    footer a{
+      color: #e5e7eb;
+      text-decoration: none;
+      margin: 0 6px;
+      font-size: 12px;
+      opacity: .9;
+    }
+
+    footer a:hover{
+      text-decoration: underline;
+      opacity: 1;
+    }
+
+    .footer-cert{
+      margin-top: 8px;
+      font-size: 13px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .footer-cert-label{
+      font-weight: 500;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      font-size: 13px;
+    }
+    .footer-cert-logos{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .footer-logo-pill{
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15,23,42,.75);
+      font-size: 12px;
+    }
+    .footer-logo-icon{
+      width: 16px;
+      height: 16px;
+      border-radius: 4px;
+      object-fit: contain;
+    }
+
+    /* Simple fade-in animation */
+    .fade-in{
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fadeInUp .6s forwards;
+    }
+
+    .fade-in.delay-1{ animation-delay: .08s; }
+    .fade-in.delay-2{ animation-delay: .16s; }
+
+    @keyframes fadeInUp{
+      to{
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive */ 
+    @media (max-width: 900px){
+      #home{
+        grid-template-columns: 1fr;
+        padding: 32px 22px 30px;
+      }
+      .hero-title{
+        font-size: 34px;
+      }
+      main{
+        padding-top: 70px;
+      }
+      .hero-side{
+        order: -1;
+      }
+    }
+
+    @media (max-width: 768px){
+      main{ padding: 60px 16px 40px; }
+      .nav{ padding: 12px 16px; flex-wrap: wrap; }
+      nav a{ padding: 10px 14px; margin-left: 6px; font-size: 13px; }
+      .brand{ font-size: 16px; }
+      .brand img{ width: 26px; height: 26px; }
+    }
+
+    @media (max-width: 640px){
+      .menu-toggle{ display: flex; }
+      header nav{
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(15,23,42,.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        padding: 12px 16px 20px;
+        gap: 4px;
+        border-bottom: 1px solid rgba(148,163,184,.25);
+      }
+      header nav a{
+        margin: 0;
+        padding: 14px 16px;
+        border-radius: 12px;
+        font-size: 15px;
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+      }
+      header.nav-open nav{ display: flex; }
+      .nav{ position: relative; }
+      .brand{ font-size: 15px; }
+      .brand img{ width: 24px; height: 24px; }
+      main{ padding: 56px 14px 36px; }
+      #home{ padding: 24px 18px 22px; }
+      .hero-title{ font-size: 28px; }
+      .hero-sub{ font-size: 15px; }
+      .hero-actions{ flex-direction: column; align-items: stretch; }
+      .hero-actions .btn{ justify-content: center; min-height: 48px; }
+      .hero-stats{ gap: 16px; }
+      .stat strong{ font-size: 18px; }
+      #contact{ padding: 32px 20px 28px; }
+      .contact-cards{ grid-template-columns: 1fr; gap: 14px; }
+      .contact-card{ padding: 18px 16px; }
+      .contact-cta-wrap .btn{ width: 100%; max-width: 280px; }
+      section{ margin-bottom: 60px; }
+      h2{ font-size: 26px; }
+      .grid{ grid-template-columns: 1fr; gap: 14px; }
+      .card{ padding: 16px; }
+      footer{ padding: 24px 12px 32px; font-size: 12px; }
+      footer a{ margin: 0 4px; }
+    }
+
+    @media (max-width: 380px){
+      .hero-title{ font-size: 24px; }
+      .brand{ font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav">
+      <div class="brand">
+        <img src="images/logo-coddy.png" alt="Coddy" />
+        Coddy Showcase
+      </div>
+      <button type="button" class="menu-toggle" aria-label="Open menu" onclick="document.querySelector('header').classList.toggle('nav-open')">
+        <span></span><span></span><span></span>
+      </button>
+      <nav onclick="document.querySelector('header').classList.remove('nav-open')">
+        <a href="#home" class="active">Home</a>
+        <a href="events.html">Events</a>
+        <a href="portfolio.html">Student Projects</a>
+        <a href="#why">Why</a>
+        <a href="#about">How it works</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HOME / HERO -->
+    <section id="home" class="fade-in">
+      <div>
+        <div class="hero-badge-row">
+          <div class="hero-badge">
+            <span class="flag">🇽🇰</span> Kosova &nbsp;•&nbsp; <span class="flag">🇦🇱</span> Tirana
+          </div>
+          <span class="hero-tagline">A modern home for Coddy talent</span>
+        </div>
+
+        <h1 class="hero-title">
+          A modern home for<br />
+          <span>Coddy Kosova</span> &amp; <span>Coddy Tirana</span>
+        </h1>
+
+        <p class="hero-sub">
+          Coddy Showcase is where events, student projects and tech portfolios from Coddy academies
+          across Kosova and Tirana come together. A single link that tells the full story of your growth.
+        </p>
+
+        <div class="hero-actions">
+          <button class="btn primary" onclick="document.getElementById('why').scrollIntoView({behavior:'smooth'})">
+            Explore Coddy
+            <span>↗</span>
+          </button>
+          <button class="btn secondary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+            Submit your project
+          </button>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat">
+            <strong>120+</strong>
+            <span>student projects</span>
+          </div>
+          <div class="stat">
+            <strong>30+</strong>
+            <span>community events</span>
+          </div>
+          <div class="stat">
+            <strong>2</strong>
+            <span>cities, one platform</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-side">
+        <img
+          class="hero-img"
+          src="images/home/hero-coddy.png"
+          alt="Coddy"
+        />
+
+        <div class="hero-floating">
+          <div class="hero-avatars">
+            <span>AK</span>
+            <span>EB</span>
+            <span>JD</span>
+          </div>
+          <div>
+            <strong style="font-size:11px;">Live student updates</strong>
+            <small>New projects added every week</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY -->
+    <section id="why" class="fade-in delay-1">
+      <div class="section-header-row">
+        <div>
+          <h2>Why Coddy?</h2>
+          <p class="section-kicker">
+            Everything Coddy in one clean, modern place — events, projects, and proud moments.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <span class="pill">Events</span>
+          <img src="images/home/home-why-events.png" alt="Coddy events" />
+          <div class="card-title">All Coddy events in one feed</div>
+          <p>Follow upcoming workshops, hackathons and demo days from both Kosova and Tirana campuses.</p>
+        </article>
+
+        <article class="card">
+          <span class="pill">Projects</span>
+          <img src="images/home/classroom-1.png" alt="Coddy students working on laptops in class" />
+          <div class="card-title">Student portfolios done right</div>
+          <p>Give every student a beautiful space to ship, show and grow their coding journey.</p>
+        </article>
+
+        <article class="card">
+          <span class="pill">Community</span>
+          <img src="images/home/classroom-2.png" alt="Happy Coddy students collaborating in front of laptops" />
+          <div class="card-title">A living Coddy community</div>
+          <p>From the first “Hello World” to advanced apps, capture the full Coddy story in motion.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- EXCELLENT STUDENTS -->
+    <section id="excellent" class="fade-in">
+      <div class="section-header-row">
+        <div>
+          <h2>Our excellent students</h2>
+          <p class="section-kicker">
+            A spotlight for standout Coddy students from Kosova and Tirana.
+          </p>
+        </div>
+      </div>
+
+      <article class="card excellent-card" onclick="toggleExcellent()">
+        <img src="images/home/excellent-students-hero.png" alt="Illustration of Coddy excellent students with laptops and certificates" class="event-image" />
+        <span class="pill">Excellent students</span>
+        <div class="card-title">Tap to meet our students</div>
+        <p>
+          Tap to open the gallery with highlighted Coddy students and their favourite courses.
+        </p>
+      </article>
+
+      <div id="excellent-panel" class="card excellent-panel">
+        <span class="pill">Excellent students</span>
+        <div class="card-title">Gallery</div>
+        <p style="margin-bottom:10px;font-size:14px;color:#475569;">
+          Here you’ll find short spotlights for our standout Coddy students — from different programs and months.
+        </p>
+
+        <div style="display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:18px;align-items:center;margin:8px 0 16px;">
+          <div>
+            <h3 style="font-size:16px;margin-bottom:6px;">What is an excellent student?</h3>
+            <p style="font-size:14px;color:#475569;margin-bottom:8px;">
+              Our excellent students are curious, consistent and kind. They love to explore new technologies,
+              finish their projects with care and help their classmates during Coddy lessons.
+            </p>
+            <p style="font-size:14px;color:#475569;margin-bottom:0;">
+              Every month we highlight students from Tirana and Kosova who show great progress in coding,
+              creativity and teamwork — from Scratch and Roblox to web development and AI.
+            </p>
+          </div>
+          <div>
+            <img src="images/home/excellent-overview.png" alt="Group of excellent Coddy students with laptops and certificates" style="width:100%;border-radius:16px;box-shadow:0 10px 30px rgba(15,23,42,.18);object-fit:cover;max-height:220px;" />
+          </div>
+        </div>
+
+        <hr style="margin:20px 0;border:none;border-top:1px solid rgba(148,163,184,.4);" />
+
+        <div class="excellent-month-tabs">
+          <button type="button" class="excellent-month-btn" data-month="2026-01" onclick="showExcellentMonth('2026-01')">Jan 2026</button>
+          <button type="button" class="excellent-month-btn active" data-month="2026-02" onclick="showExcellentMonth('2026-02')">Feb 2026</button>
+          <button type="button" class="excellent-month-btn" data-month="2026-03" onclick="showExcellentMonth('2026-03')">Mar 2026</button>
+          <button type="button" class="excellent-month-btn" data-month="2026-04" onclick="showExcellentMonth('2026-04')">Apr 2026</button>
+          <button type="button" class="excellent-month-btn" data-month="2026-05" onclick="showExcellentMonth('2026-05')">May 2026</button>
+          <button type="button" class="excellent-month-btn" data-month="2026-06" onclick="showExcellentMonth('2026-06')">Jun 2026</button>
+          <button type="button" class="excellent-month-btn" data-month="2026-07" onclick="showExcellentMonth('2026-07')">Jul 2026</button>
+          <button type="button" class="excellent-month-btn" data-month="2026-08" onclick="showExcellentMonth('2026-08')">Aug 2026</button>
+          <button type="button" class="excellent-month-btn" data-month="2026-09" onclick="showExcellentMonth('2026-09')">Sep 2026</button>
+          <button type="button" class="excellent-month-btn" data-month="2026-10" onclick="showExcellentMonth('2026-10')">Oct 2026</button>
+          <button type="button" class="excellent-month-btn" data-month="2026-11" onclick="showExcellentMonth('2026-11')">Nov 2026</button>
+          <button type="button" class="excellent-month-btn" data-month="2026-12" onclick="showExcellentMonth('2026-12')">Dec 2026</button>
+        </div>
+
+        <!-- Month sections -->
+        <div id="excellent-month-2026-01" class="excellent-month-block" style="display:none;">
+          <h3 style="font-size:16px;margin-bottom:10px;">Students of the Month – January 2026</h3>
+          <p style="font-size:14px;color:#475569;margin-bottom:12px;">
+            January spotlights are coming soon. Follow our Instagram pages to see the next excellent students.
+          </p>
+        </div>
+
+        <div id="excellent-month-2026-02" class="excellent-month-block">
+          <!-- Students of the Month & Week • February 2026 -->
+          <h3 style="font-size:16px;margin-bottom:10px;">February 2026 – Excellent students</h3>
+          <p style="font-size:14px;color:#475569;margin-bottom:12px;">
+            Këta janë disa prej nxënësve tanë më të dalluar për muajin shkurt – të përkushtuar, kreativë dhe gjithmonë gati të mësojnë diçka të re në Coddy.
+          </p>
+
+          <div class="excellent-slider">
+            <button type="button" class="excellent-arrow excellent-prev" aria-label="Previous excellent student">‹</button>
+            <div class="excellent-track">
+              <div class="excellent-track-inner" id="excellent-feb-track">
+              <article class="card excellent-student-card">
+                <img src="images/home/excellent-aiden-1.png" alt="Aiden Dani – Student of the Month" style="width:100%;border-radius:14px;margin-bottom:8px;object-fit:cover;max-height:220px;" />
+                <div class="card-title">Aiden Dani</div>
+                <p style="font-size:14px;color:#475569;margin-top:4px;">
+                  Aiden është shumë kurioz dhe i talentuar, ka përfunduar me sukses disa kurse në Coddy Tirana:
+                  Programming for little ones, Roblox Studio, Mobile app development, Landing Page Creation (HTML &amp; CSS) dhe AI Mega Minds.
+                </p>
+              </article>
+
+              <article class="card excellent-student-card">
+                <img src="images/home/excellent-erion.png" alt="Erion Krasniqi – Student of the Month" style="width:100%;border-radius:14px;margin-bottom:8px;object-fit:cover;max-height:220px;" />
+                <div class="card-title">Erion Krasniqi</div>
+                <p style="font-size:14px;color:#475569;margin-top:4px;">
+                  Erioni është pjesë e Coddy tashmë gati dy vite. Ai ka përfunduar me sukses Front End dhe tani po ndjek kursin Python Game Development me shumë pasion.
+                </p>
+              </article>
+
+              <article class="card excellent-student-card">
+                <img src="images/home/excellent-leke.png" alt="Lekë Rrustemi – Student of the Month" style="width:100%;border-radius:14px;margin-bottom:8px;object-fit:cover;max-height:220px;" />
+                <div class="card-title">Lekë Rrustemi</div>
+                <p style="font-size:14px;color:#475569;margin-top:4px;">
+                  Leka fillimisht përfundoi kursin Game Design dhe tani ka kaluar në nivelin tjetër, ku punon në projekte të reja në Front End for little ones.
+                </p>
+              </article>
+
+              <article class="card excellent-student-card">
+                <img src="images/home/excellent-ajan.png" alt="Ajan Shala – Student of the Month" style="width:100%;border-radius:14px;margin-bottom:8px;object-fit:cover;max-height:220px;" />
+                <div class="card-title">Ajan Shala</div>
+                <p style="font-size:14px;color:#475569;margin-top:4px;">
+                  Student of the Month – Game Design. Ajani krijon lojëra argëtuese dhe mendon gjithmonë për përvojën e lojtarit.
+                </p>
+              </article>
+
+              <article class="card excellent-student-card">
+                <img src="images/home/excellent-dimal.png" alt="Dimal Shaqiri – Student of the Week" style="width:100%;border-radius:14px;margin-bottom:8px;object-fit:cover;max-height:220px;" />
+                <div class="card-title">Dimal Shaqiri</div>
+                <p style="font-size:14px;color:#475569;margin-top:4px;">
+                  Dimal është i përqendruar dhe shumë kreativ në Game Design. Ai e përfundoi Scratch Jr dhe tani po ndërton nivele lojërash në Roblox Studio.
+                </p>
+              </article>
+
+              <article class="card excellent-student-card">
+                <img src="images/home/excellent-nart.png" alt="Nart Demolli – Student of the Week" style="width:100%;border-radius:14px;margin-bottom:8px;object-fit:cover;max-height:220px;" />
+                <div class="card-title">Nart Demolli</div>
+                <p style="font-size:14px;color:#475569;margin-top:4px;">
+                  Narti vjen gjithmonë me ide të reja për histori lojërash. Nga Scratch Jr ai kaloi në Roblox Studio ku tani teston dhe balancon nivelet e lojës së tij.
+                </p>
+              </article>
+
+              <article class="card excellent-student-card">
+                <img src="images/home/excellent-malik.png" alt="Malik Orllati – Student of the Week" style="width:100%;border-radius:14px;margin-bottom:8px;object-fit:cover;max-height:220px;" />
+                <div class="card-title">Malik Orllati</div>
+                <p style="font-size:14px;color:#475569;margin-top:4px;">
+                  Maliku është gjithmonë i qetë, por shumë i fokusuar në detaje. Ai përdor eksperiencën nga Scratch Jr për të krijuar mekanika të qarta lojërash në Roblox.
+                </p>
+              </article>
+
+              <article class="card excellent-student-card">
+                <img src="images/home/excellent-bora.png" alt="Bora Avdiu – Student of the Week" style="width:100%;border-radius:14px;margin-bottom:8px;object-fit:cover;max-height:220px;" />
+                <div class="card-title">Bora Avdiu</div>
+                <p style="font-size:14px;color:#475569;margin-top:4px;">
+                  Bora kombinon kreativitetin vizual nga Scratch Jr me dizajnin e niveleve në Roblox Studio, duke krijuar botë të ngrohta dhe të lojëshme.
+                </p>
+              </article>
+
+              <article class="card excellent-student-card">
+                <img src="images/home/excellent-noar.png" alt="Noar Bytyqi – Student of the Week" style="width:100%;border-radius:14px;margin-bottom:8px;object-fit:cover;max-height:220px;" />
+                <div class="card-title">Noar Bytyqi</div>
+                <p style="font-size:14px;color:#475569;margin-top:4px;">
+                  Noari është plot energji dhe entuziazëm për lojrat. Nga hapat e parë në Scratch Jr ai tani krijon lojëra ku lojtarët sfidohen dhe argëtohen në Roblox Studio.
+                </p>
+              </article>
+            </div>
+            </div>
+            <button type="button" class="excellent-arrow excellent-next" aria-label="Next excellent student">›</button>
+          </div>
+        </div>
+
+        <div id="excellent-month-2026-03" class="excellent-month-block" style="display:none;">
+          <h3 style="font-size:16px;margin-bottom:10px;">March 2026 – Excellent students</h3>
+          <p style="font-size:14px;color:#475569;margin-bottom:12px;">
+            Marti do të sjellë emra të rinj nga kurset e ndryshme të Coddy. Shpejt do të publikojmë nxënësit më të dalluar për këtë muaj.
+          </p>
+        </div>
+
+        <div id="excellent-month-2026-04" class="excellent-month-block" style="display:none;">
+          <h3 style="font-size:16px;margin-bottom:10px;">April 2026 – Excellent students</h3>
+          <p style="font-size:14px;color:#475569;margin-bottom:12px;">
+            Në prill do të shtojmë historitë e suksesit të nxënësve nga Tirana dhe Kosova, me projekte të reja kreative.
+          </p>
+        </div>
+
+        <div id="excellent-month-2026-05" class="excellent-month-block" style="display:none;">
+          <h3 style="font-size:16px;margin-bottom:10px;">May 2026 – Excellent students</h3>
+          <p style="font-size:14px;color:#475569;margin-bottom:12px;">
+            Në maj do të përzgjedhim nxënës që spikasin në projekte finale, gara dhe prezantime në Coddy.
+          </p>
+        </div>
+
+        <div id="excellent-month-2026-06" class="excellent-month-block" style="display:none;">
+          <h3 style="font-size:16px;margin-bottom:10px;">June 2026 – Excellent students</h3>
+          <p style="font-size:14px;color:#475569;margin-bottom:12px;">
+            June highlights coming soon – kamp veror, projekte të reja dhe shumë foto nga klasat.
+          </p>
+        </div>
+
+        <div id="excellent-month-2026-07" class="excellent-month-block" style="display:none;">
+          <h3 style="font-size:16px;margin-bottom:10px;">July 2026 – Excellent students</h3>
+          <p style="font-size:14px;color:#475569;margin-bottom:12px;">
+            Në korrik do të sjellim nxënës që shkëlqejnë në kampet verore dhe workshope kreative.
+          </p>
+        </div>
+
+        <div id="excellent-month-2026-08" class="excellent-month-block" style="display:none;">
+          <h3 style="font-size:16px;margin-bottom:10px;">August 2026 – Excellent students</h3>
+          <p style="font-size:14px;color:#475569;margin-bottom:12px;">
+            August spotlights will focus on nxënës që punojnë në projekte personale gjatë pushimeve verore.
+          </p>
+        </div>
+
+        <div id="excellent-month-2026-09" class="excellent-month-block" style="display:none;">
+          <h3 style="font-size:16px;margin-bottom:10px;">September 2026 – Excellent students</h3>
+          <p style="font-size:14px;color:#475569;margin-bottom:12px;">
+            Sapo të nisë viti i ri shkollor, këtu do të publikojmë nxënësit që nisin me shumë motivim sezonin e ri në Coddy.
+          </p>
+        </div>
+
+        <div id="excellent-month-2026-10" class="excellent-month-block" style="display:none;">
+          <h3 style="font-size:16px;margin-bottom:10px;">October 2026 – Excellent students</h3>
+          <p style="font-size:14px;color:#475569;margin-bottom:12px;">
+            October do të sjellë histori nga projekte të avancuara në web, Python, Roblox dhe AI.
+          </p>
+        </div>
+
+        <div id="excellent-month-2026-11" class="excellent-month-block" style="display:none;">
+          <h3 style="font-size:16px;margin-bottom:10px;">November 2026 – Excellent students</h3>
+          <p style="font-size:14px;color:#475569;margin-bottom:12px;">
+            Në nëntor do të përzgjedhim nxënës që tregojnë rritje të madhe në aftësi teknike dhe prezantim projektesh.
+          </p>
+        </div>
+
+        <div id="excellent-month-2026-12" class="excellent-month-block" style="display:none;">
+          <h3 style="font-size:16px;margin-bottom:10px;">December 2026 – Excellent students</h3>
+          <p style="font-size:14px;color:#475569;margin-bottom:12px;">
+            December recap: në fund të vitit do të shfaqim nxënësit më të dalluar nga i gjithë viti Coddy 2026.
+          </p>
+        </div>
+
+        <!-- Future students: duplicate the block above with new photo + text -->
+
+        <button class="btn secondary" style="margin-top:18px;" onclick="toggleExcellent();return false;">
+          Close gallery
+        </button>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS / ABOUT -->
+    <section id="about" class="fade-in delay-2">
+      <div class="section-header-row">
+        <div>
+          <h2>How it works</h2>
+          <p class="section-kicker">
+            A simple flow that keeps Coddy content fresh, verified and inspiring.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <span class="pill">1. Events</span>
+          <img src="images/home/home-how-1.png" alt="Events published" />
+          <div class="card-title">Events are published</div>
+          <p>Instructors and staff publish upcoming events and recap highlights with photos and links.</p>
+        </article>
+
+        <article class="card">
+          <span class="pill">2. Projects</span>
+          <img src="images/home/home-how-2.png" alt="Students upload projects" />
+          <div class="card-title">Students upload projects</div>
+          <p>Students connect GitHub repos, demos and screenshots to build a clean project gallery.</p>
+        </article>
+
+        <article class="card">
+          <span class="pill">3. Portfolios</span>
+          <img src="images/home/home-how-3.png" alt="Portfolios shared" />
+          <div class="card-title">Portfolios are shared</div>
+          <p>Each student gets a shareable portfolio link that works for applications, family and friends.</p>
+        </article>
+      </div>
+
+      <div style="margin-top:26px;display:grid;grid-template-columns:1.2fr 1fr;gap:20px;align-items:flex-start;">
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-body">
+              <h3>Curated by Coddy mentors</h3>
+              <p>Every event and project is reviewed so the platform always feels polished and professional.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-body">
+              <h3>Built for sharing</h3>
+              <p>One link you can send to parents, future employers or the whole community.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-body">
+              <h3>Always evolving</h3>
+              <p>New cohorts, new projects and new ideas keep your Coddy story feeling alive.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">For students, parents and partners</div>
+          <p style="margin-top:6px;">
+            Whether you’re a beginner writing your first JavaScript function or building full-stack apps, Coddy Showcase
+            gives you a modern, trustworthy home on the web. No more scattered links — just one beautiful profile.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section id="reviews" class="fade-in">
+      <div class="section-header-row">
+        <div>
+          <h2>Reviews from parents</h2>
+          <p class="section-kicker">Real voices from Coddy Kosova and Coddy Tirana.</p>
+        </div>
+      </div>
+
+      <div class="slider-wrapper">
+      <button type="button" class="slider-arrow slider-prev" aria-label="Reviewi i mëparshëm">‹</button>
+      <div class="slider">
+        <div class="track" id="track">
+          <article class="review">
+            <div class="review-header">
+              <div>
+                <h3>Anxhela M.</h3>
+                <small>Prind</small>
+              </div>
+              <div class="stars">★★★★★</div>
+            </div>
+            <p class="review-quote">Jam shumë e impresionuar me përparimin në shkollë të vajzës time. Gjatë muajve në Coddy, kreativiteti dhe shkathtësia e saj janë rritur. Ditët e kursit i pret me padurim! Gjithashtu mësuesit janë On TOP.</p>
+          </article>
+
+          <article class="review">
+            <div class="review-header">
+              <div>
+                <h3>Sonja T.</h3>
+                <small>Prind</small>
+              </div>
+              <div class="stars">★★★★★</div>
+            </div>
+            <p class="review-quote">Regjistrimi i vajzës time në Coddy ka qenë një ndër vendimet më të mira për të. Ajo jo vetëm që po fiton aftësi teknike por po zhvillon dhe kreativitetin dita ditës. Ekipi dhe mësuesit e Coddy School janë shumë të përkushtuar. Mendoj që është zgjedhja ideale për çdo prind që do të zhvillojë aftësitë e fëmijëve.</p>
+          </article>
+
+          <article class="review">
+            <div class="review-header">
+              <div>
+                <h3>Behije Hoti Fazliu</h3>
+                <small>Prindi i Eronit</small>
+              </div>
+              <div class="stars">★★★★★</div>
+            </div>
+            <p class="review-quote">Jam shumë e kënaqur me kursin e programimit në CODDY School Kosova. Djali im, Eroni, ka mësuar shumë, është bërë më kreativ dhe më i përqendruar, dhe tani ka më shumë vetëbesim. Stafi është shumë profesional, i durueshëm dhe afër fëmijëve, duke e bërë mësimin një eksperiencë argëtuese dhe të dobishme. E rekomandoj me gjithë zemër këtë shkollë!</p>
+          </article>
+
+          <article class="review">
+            <div class="review-header">
+              <div>
+                <h3>Ekrem Halitaj</h3>
+                <small>Prindi i Ajanës</small>
+              </div>
+              <div class="stars">★★★★★</div>
+            </div>
+            <p class="review-quote">Vajza jonë Ajana Halitaj ka nisur të ndjekë këtë kurs ku është përshtatur shpejt me mjedisin atraktiv dhe praktikat që aplikoni në kursin tuaj. Ky kurs është një përvojë e shkëlqyer për vajzën tonë duke e ndihmuar atë të zhvillojë aftësi të reja dhe të zbulojë një pasion për programimin. E rekomandoj për çdo prind që dëshiron ta prezantojë fëmijën e tij në programim në mënyrë argëtuese dhe edukative.</p>
+          </article>
+
+          <article class="review">
+            <div class="review-header">
+              <div>
+                <h3>Prindi i Lianës</h3>
+                <small>Prind</small>
+              </div>
+              <div class="stars">★★★★★</div>
+            </div>
+            <p class="review-quote">Coddy School është super! Liana mezi pret çdo orë në Coddy School! E pëlqen shumë mësuesen dhe mënyrën argëtuese si mësojnë programim. Kursi është praktik, kreativ dhe e ndihmon të mësojë pa stres. Liana jo vetëm që ka fituar njohuri të reja, por ka zhvilluar edhe aftësi logjike dhe problem-zgjidhëse. Nëse kërkoni një vend ku fëmijët mësojnë me qejf, ky është i duhuri!</p>
+          </article>
+        </div>
+      </div>
+      <button type="button" class="slider-arrow slider-next" aria-label="Reviewi tjetër">›</button>
+    </div>
+
+      <div class="controls">
+        <button onclick="go(0)" class="active" aria-label="Review 1"></button>
+        <button onclick="go(1)" aria-label="Review 2"></button>
+        <button onclick="go(2)" aria-label="Review 3"></button>
+        <button onclick="go(3)" aria-label="Review 4"></button>
+        <button onclick="go(4)" aria-label="Review 5"></button>
+      </div>
+    </section>
+
+    <!-- CONTACT / GET IN TOUCH -->
+    <section id="contact" class="fade-in delay-1">
+      <div class="section-header-row">
+        <div>
+          <h2>Get in touch</h2>
+          <p class="section-kicker">Have a project, event or idea you’d like to feature?</p>
+        </div>
+      </div>
+
+      <div class="contact-emoji-strip" aria-hidden="true">
+        <span>📧</span><span>✨</span><span>🌟</span><span>💡</span><span>📬</span><span>🚀</span>
+      </div>
+
+      <div class="contact-cta-wrap">
+        <button class="btn primary" onclick="window.location.href='mailto:coddyshowcase@proton.me?subject=Coddy%20Showcase%20Submission'">
+          📧 Email your project
+        </button>
+      </div>
+
+      <div class="contact-cards">
+        <div class="contact-card">
+          <div class="contact-icon">✉️</div>
+          <span class="contact-label">Email</span>
+          <a href="mailto:coddyshowcase@proton.me">coddyshowcase@proton.me</a>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">📷</div>
+          <span class="contact-label">Coddy Showcase</span>
+          <a href="https://instagram.com/coddyshowcase" target="_blank" rel="noopener">@coddyshowcase</a>
+          <span class="contact-address">Instagram hub for all Coddy events &amp; projects</span>
+          <button class="contact-cta-btn" onclick="window.location.href='mailto:coddyshowcase@proton.me?subject=Coddy%20Showcase%20Submission'">
+            📧 Email your project
+          </button>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">🇦🇱</div>
+          <span class="contact-label">Coddy Tirana <span class="contact-flag" aria-hidden="true">🇦🇱</span></span>
+          <a href="https://instagram.com/coddyschool_tirana" target="_blank" rel="noopener">@coddyschool_tirana</a>
+          <span class="contact-address">Rruga Elbasanit, pranë Fakultetit të Ekonomisë</span>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">🇽🇰</div>
+          <span class="contact-label">Coddy Kosova <span class="contact-flag" aria-hidden="true">🇽🇰</span></span>
+          <a href="https://instagram.com/coddyschool.kosova" target="_blank" rel="noopener">@coddyschool.kosova</a>
+          <span class="contact-address">Fushe Kosovë, rruga Abedin Sogujeva</span>
+        </div>
+        <div class="contact-extra">
+          <p class="contact-extra-title">We’re here to help</p>
+          <p class="contact-extra-text">Whether you want to share a student project, promote an event, or ask about Coddy programmes in Tirana or Kosovo — reach out. We’ll get back to you as soon as we can.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Coddy Showcase
+    •
+    <a href="#home">Home</a>
+    <a href="events.html">Events</a>
+    <a href="portfolio.html">Student Projects</a>
+    <a href="#why">Why Coddy</a>
+    <a href="#about">How it works</a>
+    <div class="footer-cert">
+      <span class="footer-cert-label">Certified by Google &amp; Microsoft</span>
+      <div class="footer-cert-logos">
+        <div class="footer-logo-pill">
+          <img src="images/home/google-logo.png" alt="Google logo" class="footer-logo-icon" />
+          <span>Google</span>
+        </div>
+        <div class="footer-logo-pill">
+          <img src="images/home/microsoft-logo.png" alt="Microsoft logo" class="footer-logo-icon" />
+          <span>Microsoft</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Dynamic year
+    document.getElementById("year").innerText = new Date().getFullYear();
+
+    // Simple slider
+    let index = 0;
+    const track = document.getElementById("track");
+    const dots = document.querySelectorAll(".controls button");
+
+    function go(i){
+      index = i;
+      track.style.transform = "translateX(" + (-i * 100) + "%)";
+      dots.forEach((b, j) => b.classList.toggle("active", j === i));
+    }
+
+    document.querySelector(".slider-prev").addEventListener("click", function(){
+      go((index - 1 + 5) % 5);
+    });
+    document.querySelector(".slider-next").addEventListener("click", function(){
+      go((index + 1) % 5);
+    });
+
+    setInterval(() => {
+      const next = (index + 1) % 5;
+      go(next);
+    }, 6000);
+
+    // Excellent students toggle
+    function toggleExcellent(){
+      const panel = document.getElementById("excellent-panel");
+      if(!panel) return;
+      const isActive = panel.classList.contains("active");
+      panel.classList.toggle("active", !isActive);
+      if(!isActive){
+        // default to February 2026 when opening
+        showExcellentMonth("2026-02");
+        panel.scrollIntoView({behavior:"smooth", block:"start"});
+      }
+    }
+
+    // Excellent students month switcher
+    function showExcellentMonth(monthKey){
+      const monthBlocks = document.querySelectorAll(".excellent-month-block");
+      monthBlocks.forEach(block => {
+        block.style.display = block.id === "excellent-month-" + monthKey ? "block" : "none";
+      });
+
+      const monthButtons = document.querySelectorAll(".excellent-month-btn");
+      monthButtons.forEach(btn => {
+        const isActive = btn.getAttribute("data-month") === monthKey;
+        btn.classList.toggle("active", isActive);
+      });
+
+      // Initialise slider only when February block is visible
+      if(monthKey === "2026-02"){
+        initExcellentSlider();
+      }
+    }
+
+    // Simple slider for February excellent students when more than 8 cards
+    let excellentIndex = 0;
+    function initExcellentSlider(){
+      const trackInner = document.getElementById("excellent-feb-track");
+      if(!trackInner) return;
+      const cards = trackInner.querySelectorAll(".excellent-student-card");
+      const total = cards.length;
+      if(total <= 8) return; // leave as static grid when 8 or less
+
+      const prev = document.querySelector(".excellent-prev");
+      const next = document.querySelector(".excellent-next");
+      if(!prev || !next) return;
+
+      function updateSlider(){
+        const visible = window.innerWidth <= 640 ? 1 : (window.innerWidth <= 900 ? 2 : 4);
+        const maxIndex = Math.max(0, total - visible);
+        if(excellentIndex > maxIndex) excellentIndex = maxIndex;
+        const offset = -(excellentIndex * (100 / visible));
+        trackInner.style.transform = "translateX(" + offset + "%)";
+        prev.disabled = excellentIndex === 0;
+        next.disabled = excellentIndex === maxIndex;
+      }
+
+      prev.onclick = function(){
+        excellentIndex = Math.max(0, excellentIndex - 1);
+        updateSlider();
+      };
+      next.onclick = function(){
+        excellentIndex = excellentIndex + 1;
+        updateSlider();
+      };
+
+      window.addEventListener("resize", updateSlider);
+      updateSlider();
+    }
+  </script>
+</body>
+</html>
+

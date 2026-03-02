@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Coddy Events • Coddy Showcase</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#1e3a8a" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+
+    :root{
+      --bg-gradient: linear-gradient(180deg,#e0f2fe,#bfdbfe);
+      --primary:#2563eb;
+      --primary-soft:#60a5fa;
+      --primary-dark:#1e3a8a;
+      --text-main:#0f172a;
+      --text-soft:#475569;
+      --card-bg:#ffffff;
+      --shadow-soft:0 18px 60px rgba(15,23,42,.16);
+      --radius-xl:28px;
+    }
+
+    html{ -webkit-text-size-adjust:100%; }
+    body{
+      font-family:Poppins,sans-serif;
+      background:var(--bg-gradient);
+      color:var(--text-main);
+      min-height:100vh;
+      overflow-x:hidden;
+    }
+
+    html{scroll-behavior:smooth;}
+
+    main{
+      max-width:1120px;
+      margin:auto;
+      padding:80px 20px 50px;
+    }
+
+    h1{
+      font-size:40px;
+      color:var(--primary-dark);
+      margin-bottom:10px;
+    }
+
+    h2{
+      font-size:26px;
+      color:var(--primary-dark);
+      margin-bottom:14px;
+    }
+
+    p{line-height:1.6;}
+
+    /* Header */
+    header{
+      position:sticky;
+      top:0;
+      z-index:20;
+      background:rgba(15,23,42,.9);
+      backdrop-filter:blur(18px);
+      border-bottom:1px solid rgba(148,163,184,.25);
+    }
+
+    .nav{
+      max-width:1120px;
+      margin:auto;
+      padding:14px 20px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .brand{
+      color:#f9fafb;
+      font-weight:700;
+      font-size:18px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    .brand img{
+      width:30px;
+      height:30px;
+    }
+
+    nav a{
+      color:#e0f2fe;
+      text-decoration:none;
+      margin-left:10px;
+      padding:8px 16px;
+      border-radius:999px;
+      font-size:14px;
+      transition:background .2s,color .2s,transform .15s;
+    }
+
+    nav a:hover{
+      background:rgba(148,163,184,.3);
+      transform:translateY(-1px);
+    }
+
+    nav a.active{
+      background:#f9fafb;
+      color:var(--primary);
+      font-weight:600;
+    }
+
+    .menu-toggle{
+      display:none;
+      width:44px;
+      height:44px;
+      border:none;
+      background:rgba(255,255,255,.1);
+      color:#f9fafb;
+      border-radius:12px;
+      cursor:pointer;
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+      gap:5px;
+      padding:0;
+    }
+    .menu-toggle span{
+      display:block;
+      width:20px;
+      height:2px;
+      background:currentColor;
+      border-radius:1px;
+    }
+
+    /* Page header */
+    .page-hero{
+      background:radial-gradient(circle at top left,#eff6ff,#ffffff);
+      border-radius:var(--radius-xl);
+      box-shadow:var(--shadow-soft);
+      padding:32px 26px 26px;
+      margin-bottom:40px;
+      display:grid;
+      grid-template-columns:1.3fr 1fr;
+      gap:24px;
+      align-items:center;
+    }
+
+    .page-hero-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:6px 12px;
+      border-radius:999px;
+      background:rgba(37,99,235,.08);
+      color:var(--primary);
+      font-size:11px;
+      font-weight:600;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      margin-bottom:10px;
+    }
+
+    .page-hero p{
+      color:var(--text-soft);
+      margin-top:4px;
+      margin-bottom:14px;
+    }
+
+    .page-hero-side{
+      text-align:right;
+      font-size:13px;
+      color:#64748b;
+    }
+
+    .page-hero-side span{
+      display:block;
+    }
+
+    .page-hero-side .insta-links{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      margin-top:12px;
+      justify-content:flex-end;
+    }
+    .page-hero-side .insta-link{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      color:#64748b;
+      text-decoration:none;
+      font-size:13px;
+      transition:color .2s, transform .2s;
+    }
+    .page-hero-side .insta-link:hover{
+      color:#e1306c;
+      transform:scale(1.05);
+    }
+    .page-hero-side .insta-link svg{
+      width:24px;
+      height:24px;
+      flex-shrink:0;
+    }
+
+    /* Events grid */
+    .filters{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-bottom:18px;
+      font-size:13px;
+      color:#64748b;
+    }
+
+    .pill-filter{
+      padding:6px 12px;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,.6);
+      background:#eff6ff;
+      color:#1d4ed8;
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:20px;
+    }
+
+    .card{
+      background:var(--card-bg);
+      border-radius:20px;
+      padding:18px 18px 20px;
+      box-shadow:0 16px 48px rgba(15,23,42,.16);
+      border:1px solid rgba(148,163,184,.22);
+      position:relative;
+      overflow:hidden;
+      transition:transform .2s,box-shadow .2s,border .2s;
+    }
+
+    .card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 22px 65px rgba(15,23,42,.26);
+      border-color:rgba(37,99,235,.35);
+    }
+
+    .event-card{
+      cursor:pointer;
+    }
+
+    .card img.event-image{
+      width:100%;
+      border-radius:16px;
+      margin-bottom:10px;
+      max-height:190px;
+      object-fit:cover;
+      display:block;
+    }
+
+    .tag-row{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:8px;
+    }
+
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:4px 10px;
+      border-radius:999px;
+      background:#eff6ff;
+      color:#1d4ed8;
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+    }
+
+    .season{
+      font-size:11px;
+      color:#64748b;
+    }
+
+    .card h3{
+      font-size:18px;
+      color:var(--primary-dark);
+      margin-bottom:4px;
+    }
+
+    .meta{
+      font-size:13px;
+      color:#64748b;
+      margin-bottom:10px;
+    }
+
+    .card p{
+      font-size:14px;
+      color:var(--text-soft);
+      margin-bottom:10px;
+    }
+
+    .chip-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:6px;
+      margin-bottom:10px;
+    }
+
+    .chip{
+      font-size:11px;
+      padding:4px 8px;
+      border-radius:999px;
+      background:#f1f5f9;
+      color:#0f172a;
+    }
+
+    /* Podcasts */
+    .podcast-intro{
+      max-width:620px;
+      color:var(--text-soft);
+      font-size:14px;
+      margin-bottom:18px;
+    }
+
+    .podcast-meta{
+      font-size:12px;
+      color:#64748b;
+      margin-top:4px;
+      margin-bottom:10px;
+    }
+
+    .podcast-platforms{
+      display:flex;
+      flex-wrap:wrap;
+      gap:6px;
+      font-size:11px;
+      color:#0f172a;
+    }
+
+    .podcast-pill{
+      padding:4px 9px;
+      border-radius:999px;
+      background:#f1f5f9;
+    }
+
+    .podcast-link{
+      display:inline-block;
+      padding:8px 14px;
+      border-radius:999px;
+      background:linear-gradient(135deg,var(--primary),var(--primary-soft));
+      color:#fff;
+      font-size:13px;
+      font-weight:600;
+      text-decoration:none;
+      transition:transform .15s,box-shadow .15s;
+    }
+    .podcast-link:hover{
+      transform:translateY(-1px);
+      box-shadow:0 10px 30px rgba(37,99,235,.4);
+    }
+
+    .podcast-coming{
+      display:inline-block;
+      padding:6px 12px;
+      border-radius:999px;
+      background:#f1f5f9;
+      color:#64748b;
+      font-size:12px;
+    }
+
+    /* Galleries */
+    .gallery-section{
+      margin-top:32px;
+      padding:20px 18px 22px;
+      border-radius:20px;
+      background:rgba(255,255,255,.78);
+      box-shadow:0 16px 45px rgba(15,23,42,.16);
+      border:1px solid rgba(148,163,184,.3);
+      display:none;
+    }
+
+    .gallery-section.active{
+      display:block;
+    }
+
+    .podcast-section{
+      margin-top:32px;
+      padding:20px 18px 22px;
+      border-radius:20px;
+      background:rgba(255,255,255,.78);
+      box-shadow:0 16px 45px rgba(15,23,42,.16);
+      border:1px solid rgba(148,163,184,.3);
+      display:none;
+    }
+    .podcast-section.active{
+      display:block;
+    }
+    .podcast-card{
+      cursor:pointer;
+    }
+
+    .gallery-title{
+      font-size:20px;
+      color:var(--primary-dark);
+      margin-bottom:6px;
+    }
+
+    .gallery-sub{
+      font-size:13px;
+      color:#64748b;
+      margin-bottom:14px;
+    }
+
+    .gallery-slider{
+      position:relative;
+      overflow:hidden;
+      border-radius:16px;
+      background:#020617;
+    }
+
+    .gallery-track{
+      display:flex;
+      transition:transform .5s cubic-bezier(.22,.61,.36,1);
+    }
+
+    .gallery-slide{
+      min-width:100%;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:8px;
+    }
+
+    .gallery-slide img{
+      max-width:100%;
+      max-height:420px;
+      width:auto;
+      height:auto;
+      border-radius:16px;
+      object-fit:contain;
+      display:block;
+    }
+
+    .gallery-controls{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-top:8px;
+      gap:8px;
+    }
+
+    .gallery-arrows{
+      display:flex;
+      gap:6px;
+    }
+
+    .gallery-btn{
+      width:26px;
+      height:26px;
+      border-radius:999px;
+      border:none;
+      background:#eff6ff;
+      color:#1e3a8a;
+      cursor:pointer;
+      font-size:14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      transition:background .2s,transform .15s;
+    }
+
+    .gallery-btn:hover{
+      background:#dbeafe;
+      transform:translateY(-1px);
+    }
+
+    .gallery-dots{
+      display:flex;
+      gap:4px;
+      justify-content:center;
+      flex:1;
+    }
+
+    .gallery-dot{
+      width:7px;
+      height:7px;
+      border-radius:999px;
+      background:#cbd5f5;
+      border:none;
+      cursor:pointer;
+      padding:0;
+    }
+
+    .gallery-dot.active{
+      width:15px;
+      background:#2563eb;
+    }
+
+    .gallery-close{
+      margin-top:10px;
+      font-size:12px;
+      color:#64748b;
+      cursor:pointer;
+      text-decoration:underline;
+      width:max-content;
+    }
+
+    /* Footer */
+    footer{
+      text-align:center;
+      padding:24px 16px 32px;
+      font-size:13px;
+      background:rgba(15,23,42,.9);
+      backdrop-filter:blur(18px);
+      border-top:1px solid rgba(148,163,184,.35);
+      color:#e5e7eb;
+      margin-top:32px;
+    }
+
+    footer a{
+      color:#e5e7eb;
+      text-decoration:none;
+      margin:0 6px;
+      font-size:12px;
+      opacity:.9;
+    }
+
+    footer a:hover{
+      text-decoration:underline;
+      opacity:1;
+    }
+
+    .footer-cert{
+      margin-top:8px;
+      font-size:13px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:6px;
+    }
+    .footer-cert-label{
+      font-weight:500;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+      font-size:13px;
+    }
+    .footer-cert-logos{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .footer-logo-pill{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:4px 10px;
+      border-radius:999px;
+      background:rgba(15,23,42,.75);
+      font-size:12px;
+    }
+    .footer-logo-icon{
+      width:16px;
+      height:16px;
+      border-radius:4px;
+      background:#e5e7eb;
+    }
+
+    /* Responsive / Mobile */
+    @media(max-width:900px){
+      .page-hero{
+        grid-template-columns:1fr;
+        text-align:left;
+      }
+      .page-hero-side{
+        text-align:left;
+      }
+      .page-hero-side .insta-links{
+        justify-content:flex-start;
+      }
+    }
+
+    @media(max-width:768px){
+      main{ padding:60px 16px 40px; }
+      .nav{ padding:12px 16px; }
+      nav a{ padding:10px 14px; font-size:13px; }
+      .brand{ font-size:16px; }
+      .brand img{ width:26px; height:26px; }
+      .grid{ grid-template-columns:1fr; }
+      .card{ padding:16px; }
+      .event-card img.event-image{ max-height:200px; }
+    }
+
+    @media(max-width:640px){
+      .menu-toggle{ display:flex; }
+      header nav{
+        display:none;
+        position:absolute;
+        top:100%;
+        left:0;
+        right:0;
+        background:rgba(15,23,42,.98);
+        backdrop-filter:blur(20px);
+        flex-direction:column;
+        padding:12px 16px 20px;
+        gap:4px;
+        border-bottom:1px solid rgba(148,163,184,.25);
+      }
+      header nav a{
+        margin:0;
+        padding:14px 16px;
+        border-radius:12px;
+        font-size:15px;
+        min-height:48px;
+        display:flex;
+        align-items:center;
+      }
+      header.nav-open nav{ display:flex; }
+      .nav{ position:relative; }
+      .brand{ font-size:15px; }
+      .brand img{ width:24px; height:24px; }
+      main{ padding:56px 14px 36px; }
+      .page-hero{ padding:22px 18px 20px; }
+      h1{ font-size:28px; }
+      .program-grid{ grid-template-columns:1fr; gap:14px; }
+      .program-card img{ height:140px; }
+      .gallery-slide img{ max-height:280px; }
+      .gallery-controls{ flex-wrap:wrap; }
+      .podcast-link{ display:block; text-align:center; min-height:48px; line-height:48px; padding:0 16px; }
+      footer{ padding:24px 12px 32px; font-size:12px; }
+    }
+
+    @media(max-width:380px){
+      h1{ font-size:24px; }
+      nav a{ padding:8px 10px; font-size:12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav">
+      <div class="brand">
+        <img src="images/logo-coddy.png" alt="Coddy" />
+        Coddy Showcase
+      </div>
+      <button type="button" class="menu-toggle" aria-label="Open menu" onclick="document.querySelector('header').classList.toggle('nav-open')">
+        <span></span><span></span><span></span>
+      </button>
+      <nav onclick="document.querySelector('header').classList.remove('nav-open')">
+        <a href="index.html">Home</a>
+        <a href="events.html" class="active">Events</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div>
+        <div class="page-hero-badge">
+          Coddy Events • Kosova &amp; Tirana
+        </div>
+        <h1>Events calendar</h1>
+        <p>
+          Discover signature Coddy events like Summer Camp, Winter Camp and Girls in Tech.
+          Perfect moments to learn, connect and build something real.
+        </p>
+      </div>
+      <div class="page-hero-side">
+        <span>Follow us to stay updated on upcoming events.</span>
+        <div class="insta-links">
+          <a href="https://instagram.com/coddyschool_tirana" target="_blank" rel="noopener" class="insta-link" aria-label="Coddy Tirana on Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            <span>Tirana</span>
+          </a>
+          <a href="https://instagram.com/coddyschool.kosova" target="_blank" rel="noopener" class="insta-link" aria-label="Coddy Kosova on Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            <span>Kosova</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="filters">
+        <span>Featured tracks:</span>
+        <span class="pill-filter">Summer camp</span>
+        <span class="pill-filter">Winter camp</span>
+        <span class="pill-filter">Girls in tech</span>
+        <span class="pill-filter">Podcasts</span>
+      </div>
+
+      <div class="grid">
+        <!-- Summer Camp -->
+        <article class="card event-card" data-gallery="summer">
+          <img
+            src="images/summer-camp/summer-camp-card.png"
+            alt="Fëmijë në Coddy Summer Camp në pishinë"
+            class="event-image"
+          />
+          <div class="tag-row">
+            <span class="tag">Summer Camp</span>
+            <span class="season">☀️ July • Outdoor &amp; online</span>
+          </div>
+          <h3>Coddy Summer Camp</h3>
+          <div class="meta">Age 10–17 • Prishtina &amp; Tirana</div>
+          <p>
+            A full week of coding, games and mini‑hackathons. Students learn web, games and basic AI
+            while building projects they can proudly show at home.
+          </p>
+          <div class="chip-row">
+            <span class="chip">Web dev</span>
+            <span class="chip">Game dev</span>
+            <span class="chip">Team projects</span>
+            <span class="chip">Showcase night</span>
+          </div>
+        </article>
+
+        <!-- Winter Camp -->
+        <article class="card event-card" data-gallery="winter">
+          <img
+            src="images/events-winter-camp-2.png"
+            alt="Fëmijë në Coddy Winter Camp"
+            class="event-image"
+          />
+          <div class="tag-row">
+            <span class="tag">Winter Camp</span>
+            <span class="season">❄️ December–January</span>
+          </div>
+          <h3>Coddy Winter Camp</h3>
+          <div class="meta">Age 10–17 • Cozy coding labs</div>
+          <p>
+            During the winter holidays, students dive into intensive coding sessions, warming up with
+            hot chocolate and cool projects — from mini‑apps to simple games.
+          </p>
+          <div class="chip-row">
+            <span class="chip">Python basics</span>
+            <span class="chip">Logic &amp; problem solving</span>
+            <span class="chip">Code &amp; creativity</span>
+          </div>
+        </article>
+
+        <!-- Girls in Tech -->
+        <article class="card event-card" data-gallery="girls">
+          <img
+            src="images/events-girls-in-tech-2.png"
+            alt="Vajza në Girls in Tech"
+            class="event-image"
+          />
+          <div class="tag-row">
+            <span class="tag">Girls in Tech</span>
+            <span class="season">👩‍💻 Throughout the year</span>
+          </div>
+          <h3>Coddy Girls in Tech</h3>
+          <div class="meta">Girls 10–18 • Mentors &amp; role models</div>
+          <p>
+            A safe, inspiring space where girls learn to code, meet local women in tech and
+            build projects together — from websites to small apps.
+          </p>
+          <div class="chip-row">
+            <span class="chip">Women mentors</span>
+            <span class="chip">Community</span>
+            <span class="chip">Confidence in tech</span>
+          </div>
+        </article>
+
+        <!-- Trips / Excursions -->
+        <article class="card event-card">
+          <img
+            src="images/events-excursion-1.png"
+            alt="Coddy students on a trip"
+            class="event-image"
+          />
+          <div class="tag-row">
+            <span class="tag">Trips &amp; Excursions</span>
+            <span class="season">🚌 Museums, parks &amp; labs</span>
+          </div>
+          <h3>Coddy Trips &amp; Excursions</h3>
+          <div class="meta">Small groups • Guided by mentors</div>
+          <p>
+            Coding meets the real world — visits to museums, tech hubs and fun outdoor activities that make
+            learning feel like an adventure.
+          </p>
+          <div class="chip-row">
+            <span class="chip">Museums</span>
+            <span class="chip">STEM activities</span>
+            <span class="chip">Team bonding</span>
+          </div>
+        </article>
+
+        <!-- Official Celebrations -->
+        <article class="card event-card" data-gallery="celebrations">
+          <img
+            src="file:///C:/Users/Admin/.cursor/projects/c-Users-Admin-Desktop-ShowcaseCursor/assets/c__Users_Admin_AppData_Roaming_Cursor_User_workspaceStorage_c04dbc70bd42aa5ecb4167a2c7a6c43b_images_viber_image_2026-02-25_19-33-18-505-838be1c3-fa31-48cf-81bc-1d49358e0645.png"
+            alt="Coddy celebrations with certificates"
+            class="event-image"
+          />
+          <div class="tag-row">
+            <span class="tag">Official Celebrations</span>
+            <span class="season">🎓 Certificates &amp; photos</span>
+          </div>
+          <h3>Official Coddy Celebrations</h3>
+          <div class="meta">End-of-course moments with family</div>
+          <p>
+            Ceremony days where students receive certificates, take photos with mentors and celebrate everything
+            they have built during the course.
+          </p>
+          <div class="chip-row">
+            <span class="chip">Certificates</span>
+            <span class="chip">Photo day</span>
+            <span class="chip">Proud moments</span>
+          </div>
+        </article>
+
+        <!-- Podcasts card -->
+        <article class="card podcast-card" data-open="podcast">
+          <img
+            src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=600&q=80"
+            alt="Podcasts"
+            class="event-image"
+          />
+          <div class="tag-row">
+            <span class="tag">Podcasts</span>
+            <span class="season">🎧 YouTube</span>
+          </div>
+          <h3>Coddy Podcasts</h3>
+          <div class="meta">Dëgjo episodet në YouTube</div>
+          <p>
+            Kliko këtu për të parë të gjitha episodet — dëgjo në YouTube.
+          </p>
+          <div class="chip-row">
+            <span class="chip">Episodet</span>
+            <span class="chip">YouTube</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- GALLERIES -->
+    <section id="gallery-summer" class="gallery-section">
+      <div class="gallery-title">Summer Camp gallery</div>
+      <p class="gallery-sub">Some moments from Coddy Summer Camp — museum visits, sports, crafts and lots of smiles.</p>
+      <div class="gallery-slider" data-gallery-key="summer">
+        <div class="gallery-track">
+          <div class="gallery-slide">
+            <img src="images/summer-camp/summer-camp-1.png" alt="Children at a museum exhibit" />
+          </div>
+          <div class="gallery-slide">
+            <img src="images/summer-camp/summer-camp-2.png" alt="Kids ice skating at camp" />
+          </div>
+          <div class="gallery-slide">
+            <img src="images/summer-camp/summer-camp-3.png" alt="Basketball at summer camp" />
+          </div>
+          <div class="gallery-slide">
+            <img src="images/summer-camp/summer-camp-4.png" alt="Students at historical exhibit" />
+          </div>
+          <div class="gallery-slide">
+            <img src="images/summer-camp/summer-camp-5.png" alt="Outdoor drawing and crafts" />
+          </div>
+          <div class="gallery-slide">
+            <img src="images/summer-camp/summer-camp-6.png" alt="Girl in pool thumbs up" />
+          </div>
+          <div class="gallery-slide">
+            <img src="images/summer-camp/summer-camp-7.png" alt="Girl with flower collage art" />
+          </div>
+          <div class="gallery-slide">
+            <img src="images/summer-camp/summer-camp-8.png" alt="Boy with Red Cross drawing" />
+          </div>
+          <div class="gallery-slide">
+            <img src="images/summer-camp/summer-camp-9.png" alt="Basketball game at camp" />
+          </div>
+        </div>
+        <div class="gallery-controls">
+          <div class="gallery-arrows">
+            <button class="gallery-btn" data-dir="prev">‹</button>
+            <button class="gallery-btn" data-dir="next">›</button>
+          </div>
+          <div class="gallery-dots"></div>
+        </div>
+      </div>
+      <div class="gallery-close" onclick="hideGalleries()">Close gallery</div>
+    </section>
+
+    <section id="gallery-winter" class="gallery-section">
+      <div class="gallery-title">Winter Camp gallery</div>
+      <p class="gallery-sub">Cozy coding during the holidays — warm drinks, cold weather and focused screens.</p>
+      <div class="gallery-slider" data-gallery-key="winter">
+        <div class="gallery-track">
+          <div class="gallery-slide">
+            <img src="https://images.pexels.com/photos/3778680/pexels-photo-3778680.jpeg" alt="Students coding in winter camp" />
+          </div>
+          <div class="gallery-slide">
+            <img src="https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg" alt="Winter camp group working on laptops" />
+          </div>
+          <div class="gallery-slide">
+            <img src="https://images.pexels.com/photos/4144222/pexels-photo-4144222.jpeg" alt="Teacher helping a student" />
+          </div>
+          <div class="gallery-slide">
+            <img src="https://images.pexels.com/photos/1181243/pexels-photo-1181243.jpeg" alt="Student focusing on code" />
+          </div>
+          <div class="gallery-slide">
+            <img src="https://images.pexels.com/photos/1181562/pexels-photo-1181562.jpeg" alt="Winter camp group collaboration" />
+          </div>
+        </div>
+        <div class="gallery-controls">
+          <div class="gallery-arrows">
+            <button class="gallery-btn" data-dir="prev">‹</button>
+            <button class="gallery-btn" data-dir="next">›</button>
+          </div>
+          <div class="gallery-dots"></div>
+        </div>
+      </div>
+      <div class="gallery-close" onclick="hideGalleries()">Close gallery</div>
+    </section>
+
+    <section id="gallery-girls" class="gallery-section">
+      <div class="gallery-title">Girls in Tech gallery</div>
+      <p class="gallery-sub">Snapshots from Girls in Tech meetups — collaboration, mentorship and inspiration.</p>
+      <div class="gallery-slider" data-gallery-key="girls">
+        <div class="gallery-track">
+          <div class="gallery-slide">
+            <img src="https://images.pexels.com/photos/1181533/pexels-photo-1181533.jpeg" alt="Girls learning to code together" />
+          </div>
+          <div class="gallery-slide">
+            <img src="https://images.pexels.com/photos/1181353/pexels-photo-1181353.jpeg" alt="Mentor helping a student" />
+          </div>
+          <div class="gallery-slide">
+            <img src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg" alt="Group of girls collaborating on a project" />
+          </div>
+          <div class="gallery-slide">
+            <img src="https://images.pexels.com/photos/1181268/pexels-photo-1181268.jpeg" alt="Girl typing on laptop" />
+          </div>
+          <div class="gallery-slide">
+            <img src="https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg" alt="Girls in tech discussion circle" />
+          </div>
+        </div>
+        <div class="gallery-controls">
+          <div class="gallery-arrows">
+            <button class="gallery-btn" data-dir="prev">‹</button>
+            <button class="gallery-btn" data-dir="next">›</button>
+          </div>
+          <div class="gallery-dots"></div>
+        </div>
+      </div>
+      <div class="gallery-close" onclick="hideGalleries()">Close gallery</div>
+    </section>
+
+    <section id="gallery-celebrations" class="gallery-section">
+      <div class="gallery-title">Celebrations gallery</div>
+      <p class="gallery-sub">Momente nga ceremonitë e certificimit në Coddy — foto me mentorë, prindër dhe shumë buzëqeshje.</p>
+      <div class="gallery-slider" data-gallery-key="celebrations">
+        <div class="gallery-track">
+          <div class="gallery-slide">
+            <img src="file:///C:/Users/Admin/.cursor/projects/c-Users-Admin-Desktop-ShowcaseCursor/assets/c__Users_Admin_AppData_Roaming_Cursor_User_workspaceStorage_c04dbc70bd42aa5ecb4167a2c7a6c43b_images_viber_image_2026-02-25_19-33-18-991-0aa69420-0b74-486d-ace2-f30520b169a8.png" alt="Celebration photo 1" />
+          </div>
+          <div class="gallery-slide">
+            <img src="file:///C:/Users/Admin/.cursor/projects/c-Users-Admin-Desktop-ShowcaseCursor/assets/c__Users_Admin_AppData_Roaming_Cursor_User_workspaceStorage_c04dbc70bd42aa5ecb4167a2c7a6c43b_images_viber_image_2026-02-25_19-33-28-226-a3724fe4-3f16-447c-a289-529931136a63.png" alt="Celebration photo 2" />
+          </div>
+          <div class="gallery-slide">
+            <img src="file:///C:/Users/Admin/.cursor/projects/c-Users-Admin-Desktop-ShowcaseCursor/assets/c__Users_Admin_AppData_Roaming_Cursor_User_workspaceStorage_c04dbc70bd42aa5ecb4167a2c7a6c43b_images_viber_image_2026-02-25_19-33-29-604-9d23f4e2-e665-483a-8e1b-0a8161efcc95.png" alt="Celebration photo 3" />
+          </div>
+          <div class="gallery-slide">
+            <img src="file:///C:/Users/Admin/.cursor/projects/c-Users-Admin-Desktop-ShowcaseCursor/assets/c__Users_Admin_AppData_Roaming_Cursor_User_workspaceStorage_c04dbc70bd42aa5ecb4167a2c7a6c43b_images_viber_image_2026-02-25_19-33-36-567-a2d5d44b-aa50-4c28-88f7-96148e29ffec.png" alt="Celebration photo 4" />
+          </div>
+          <div class="gallery-slide">
+            <img src="file:///C:/Users/Admin/.cursor/projects/c-Users-Admin-Desktop-ShowcaseCursor/assets/c__Users_Admin_AppData_Roaming_Cursor_User_workspaceStorage_c04dbc70bd42aa5ecb4167a2c7a6c43b_images_viber_image_2026-02-25_19-33-21-855-ba40c8fe-e881-43de-b254-52f98e0d214f.png" alt="Celebration photo 5" />
+          </div>
+          <div class="gallery-slide">
+            <img src="file:///C:/Users/Admin/.cursor/projects/c-Users-Admin-Desktop-ShowcaseCursor/assets/c__Users_Admin_AppData_Roaming_Cursor_User_workspaceStorage_c04dbc70bd42aa5ecb4167a2c7a6c43b_images_viber_image_2026-02-25_19-33-41-144-68a72b3b-966e-4fe4-b3fe-9685497cb3a8.png" alt="Celebration photo 6" />
+          </div>
+          <div class="gallery-slide">
+            <img src="file:///C:/Users/Admin/.cursor/projects/c-Users-Admin-Desktop-ShowcaseCursor/assets/c__Users_Admin_AppData_Roaming_Cursor_User_workspaceStorage_c04dbc70bd42aa5ecb4167a2c7a6c43b_images_viber_image_2026-02-25_19-33-42-475-35f6e307-4cf0-44bd-99e7-8db81d1ec2e7.png" alt="Celebration photo 7" />
+          </div>
+          <div class="gallery-slide">
+            <img src="file:///C:/Users/Admin/.cursor/projects/c-Users-Admin-Desktop-ShowcaseCursor/assets/c__Users_Admin_AppData_Roaming_Cursor_User_workspaceStorage_c04dbc70bd42aa5ecb4167a2c7a6c43b_images_viber_image_2026-02-25_19-33-08-064-b9bc6ce3-2d72-4db7-b414-484069539c45.png" alt="Celebration photo 8" />
+          </div>
+          <div class="gallery-slide">
+            <img src="file:///C:/Users/Admin/.cursor/projects/c-Users-Admin-Desktop-ShowcaseCursor/assets/c__Users_Admin_AppData_Roaming_Cursor_User_workspaceStorage_c04dbc70bd42aa5ecb4167a2c7a6c43b_images_viber_image_2026-02-25_19-33-10-573-7fbbc760-d775-445d-81db-79b833b58a9c.png" alt="Celebration photo 9" />
+          </div>
+          <div class="gallery-slide">
+            <img src="file:///C:/Users/Admin/.cursor/projects/c-Users-Admin-Desktop-ShowcaseCursor/assets/c__Users_Admin_AppData_Roaming_Cursor_User_workspaceStorage_c04dbc70bd42aa5ecb4167a2c7a6c43b_images_viber_image_2026-02-25_19-33-16-651-e1ba97f2-829d-466f-b45c-e7dac2a592aa.png" alt="Celebration photo 10" />
+          </div>
+          <div class="gallery-slide">
+            <img src="file:///C:/Users/Admin/.cursor/projects/c-Users-Admin-Desktop-ShowcaseCursor/assets/c__Users_Admin_AppData_Roaming_Cursor_User_workspaceStorage_c04dbc70bd42aa5ecb4167a2c7a6c43b_images_viber_image_2026-02-25_19-33-17-116-ca40b299-1553-45a9-8417-315a32f6b0ef.png" alt="Celebration photo 11" />
+          </div>
+          <div class="gallery-slide">
+            <img src="file:///C:/Users/Admin/.cursor/projects/c-Users-Admin-Desktop-ShowcaseCursor/assets/c__Users_Admin_AppData_Roaming_Cursor_User_workspaceStorage_c04dbc70bd42aa5ecb4167a2c7a6c43b_images_viber_image_2026-02-25_19-33-22-385-9e348c9a-3114-4c7c-9e2e-f63e10b1bb35.png" alt="Celebration photo 12" />
+          </div>
+          <div class="gallery-slide">
+            <img src="file:///C:/Users/Admin/.cursor/projects/c-Users-Admin-Desktop-ShowcaseCursor/assets/c__Users_Admin_AppData_Roaming_Cursor_User_workspaceStorage_c04dbc70bd42aa5ecb4167a2c7a6c43b_images_viber_image_2026-02-25_19-33-09-422-0a469e37-a6ee-4538-be48-56c57f9b6da1.png" alt="Celebration photo 13" />
+          </div>
+          <div class="gallery-slide">
+            <img src="file:///C:/Users/Admin/.cursor/projects/c-Users-Admin-Desktop-ShowcaseCursor/assets/c__Users_Admin_AppData_Roaming_Cursor_User_workspaceStorage_c04dbc70bd42aa5ecb4167a2c7a6c43b_images_viber_image_2026-02-25_19-33-21-318-9a5f4c66-9dc5-4f50-b85f-b99ab91a8930.png" alt="Celebration photo 14" />
+          </div>
+          <div class="gallery-slide">
+            <img src="file:///C:/Users/Admin/.cursor/projects/c-Users-Admin-Desktop-ShowcaseCursor/assets/c__Users_Admin_AppData_Roaming_Cursor_User_workspaceStorage_c04dbc70bd42aa5ecb4167a2c7a6c43b_images_viber_image_2026-02-25_19-33-33-058-523ffa9e-9fe7-46f2-a1fd-6e27e8af2d05.png" alt="Celebration photo 15" />
+          </div>
+          <div class="gallery-slide">
+            <img src="file:///C:/Users/Admin/.cursor/projects/c-Users-Admin-Desktop-ShowcaseCursor/assets/c__Users_Admin_AppData_Roaming_Cursor_User_workspaceStorage_c04dbc70bd42aa5ecb4167a2c7a6c43b_images_viber_image_2026-02-25_19-33-12-907-5f9b4bc8-0402-41f9-9746-597cd96f048d.png" alt="Celebration photo 16" />
+          </div>
+          <div class="gallery-slide">
+            <img src="file:///C:/Users/Admin/.cursor/projects/c-Users-Admin-Desktop-ShowcaseCursor/assets/c__Users_Admin_AppData_Roaming_Cursor_User_workspaceStorage_c04dbc70bd42aa5ecb4167a2c7a6c43b_images_viber_image_2026-02-25_19-33-37-669-b988a3ea-c2b4-45c4-9305-9c0028cabc51.png" alt="Celebration photo 17" />
+          </div>
+          <div class="gallery-slide">
+            <img src="file:///C:/Users/Admin/.cursor/projects/c-Users-Admin-Desktop-ShowcaseCursor/assets/c__Users_Admin_AppData_Roaming_Cursor_User_workspaceStorage_c04dbc70bd42aa5ecb4167a2c7a6c43b_images_viber_image_2026-02-25_19-33-43-962-522971c7-d0c4-489f-8772-a51480f85172.png" alt="Celebration photo 18" />
+          </div>
+          <div class="gallery-slide">
+            <img src="file:///C:/Users/Admin/.cursor/projects/c-Users-Admin-Desktop-ShowcaseCursor/assets/c__Users_Admin_AppData_Roaming_Cursor_User_workspaceStorage_c04dbc70bd42aa5ecb4167a2c7a6c43b_images_viber_image_2026-02-25_19-33-43-585-af1680a1-ebf8-4821-aa64-5e222cf40bef.png" alt="Celebration photo 19" />
+          </div>
+          <div class="gallery-slide">
+            <img src="file:///C:/Users/Admin/.cursor/projects/c-Users-Admin-Desktop-ShowcaseCursor/assets/c__Users_Admin_AppData_Roaming_Cursor_User_workspaceStorage_c04dbc70bd42aa5ecb4167a2c7a6c43b_images_viber_image_2026-02-25_19-33-45-869-0150322d-b507-4a2c-9551-a59f8012e487.png" alt="Celebration photo 20" />
+          </div>
+          <div class="gallery-slide">
+            <img src="file:///C:/Users/Admin/.cursor/projects/c-Users-Admin-Desktop-ShowcaseCursor/assets/c__Users_Admin_AppData_Roaming_Cursor_User_workspaceStorage_c04dbc70bd42aa5ecb4167a2c7a6c43b_images_viber_image_2026-02-25_19-33-45-530-e92d0939-4b8f-42c4-a419-f4544bbe7926.png" alt="Celebration photo 21" />
+          </div>
+          <div class="gallery-slide">
+            <img src="file:///C:/Users/Admin/.cursor/projects/c-Users-Admin-Desktop-ShowcaseCursor/assets/c__Users_Admin_AppData_Roaming_Cursor_User_workspaceStorage_c04dbc70bd42aa5ecb4167a2c7a6c43b_images_viber_image_2026-02-25_19-33-33-621-a0d28206-a91a-430f-b7d1-80ee5b99262e.png" alt="Celebration photo 22" />
+          </div>
+          <div class="gallery-slide">
+            <img src="file:///C:/Users/Admin/.cursor/projects/c-Users-Admin-Desktop-ShowcaseCursor/assets/c__Users_Admin_AppData_Roaming_Cursor_User_workspaceStorage_c04dbc70bd42aa5ecb4167a2c7a6c43b_images_viber_image_2026-02-25_19-33-46-657-07db6065-4ee1-4149-b773-f3c442e118d5.png" alt="Celebration photo 23" />
+          </div>
+          <div class="gallery-slide">
+            <img src="file:///C:/Users/Admin/.cursor/projects/c-Users-Admin-Desktop-ShowcaseCursor/assets/c__Users_Admin_AppData_Roaming_Cursor_User_workspaceStorage_c04dbc70bd42aa5ecb4167a2c7a6c43b_images_viber_image_2026-02-25_19-33-19-992-e913824b-f182-4e57-a81c-b8eaebe5d14b.png" alt="Celebration photo 24" />
+          </div>
+          <div class="gallery-slide">
+            <img src="file:///C:/Users/Admin/.cursor/projects/c-Users-Admin-Desktop-ShowcaseCursor/assets/c__Users_Admin_AppData_Roaming_Cursor_User_workspaceStorage_c04dbc70bd42aa5ecb4167a2c7a6c43b_images_viber_image_2026-02-25_19-33-31-624-3f57ec44-3c67-4c41-a997-0f39f4def405.png" alt="Celebration photo 25" />
+          </div>
+          <div class="gallery-slide">
+            <img src="file:///C:/Users/Admin/.cursor/projects/c-Users-Admin-Desktop-ShowcaseCursor/assets/c__Users_Admin_AppData_Roaming_Cursor_User_workspaceStorage_c04dbc70bd42aa5ecb4167a2c7a6c43b_images_viber_image_2026-02-25_19-33-19-484-a81cac01-d1bf-481f-a011-091710326b6c.png" alt="Celebration photo 26" />
+          </div>
+          <div class="gallery-slide">
+            <img src="file:///C:/Users/Admin/.cursor/projects/c-Users-Admin-Desktop-ShowcaseCursor/assets/c__Users_Admin_AppData_Roaming_Cursor_User_workspaceStorage_c04dbc70bd42aa5ecb4167a2c7a6c43b_images_viber_image_2026-02-25_19-33-42-980-cc8806a1-9aae-41a3-9419-609d38b4a324.png" alt="Celebration photo 27" />
+          </div>
+          <div class="gallery-slide">
+            <img src="file:///C:/Users/Admin/.cursor/projects/c-Users-Admin-Desktop-ShowcaseCursor/assets/c__Users_Admin_AppData_Roaming_Cursor_User_workspaceStorage_c04dbc70bd42aa5ecb4167a2c7a6c43b_images_viber_image_2026-02-25_19-33-46-920-c089fdaa-789e-4bb4-af42-6428ca93c392.png" alt="Celebration photo 28" />
+          </div>
+          <div class="gallery-slide">
+            <img src="file:///C:/Users/Admin/.cursor/projects/c-Users-Admin-Desktop-ShowcaseCursor/assets/c__Users_Admin_AppData_Roaming_Cursor_User_workspaceStorage_c04dbc70bd42aa5ecb4167a2c7a6c43b_images_viber_image_2026-02-25_19-33-46-390-e5f6bfd7-98a0-4d1d-a71f-0e34e1ea9b62.png" alt="Celebration photo 29" />
+          </div>
+          <div class="gallery-slide">
+            <img src="file:///C:/Users/Admin/.cursor/projects/c-Users-Admin-Desktop-ShowcaseCursor/assets/c__Users_Admin_AppData_Roaming_Cursor_User_workspaceStorage_c04dbc70bd42aa5ecb4167a2c7a6c43b_images_viber_image_2026-02-25_19-33-46-109-781eba34-8cda-4b90-92c7-c3d802997dcf.png" alt="Celebration photo 30" />
+          </div>
+        </div>
+        <div class="gallery-controls">
+          <div class="gallery-arrows">
+            <button class="gallery-btn" data-dir="prev">‹</button>
+            <button class="gallery-btn" data-dir="next">›</button>
+          </div>
+          <div class="gallery-dots"></div>
+        </div>
+      </div>
+      <div class="gallery-close" onclick="hideGalleries()">Close gallery</div>
+    </section>
+
+    <section id="podcast-episodes" class="podcast-section">
+      <div class="gallery-title">Coddy Podcasts</div>
+      <p class="podcast-intro">
+        Të gjitha episodet në YouTube. Zgjidh një episod dhe dëgjo.
+      </p>
+
+      <div class="grid">
+        <article class="card">
+          <div class="tag-row">
+            <span class="tag">Podcast</span>
+            <span class="season">YouTube</span>
+          </div>
+          <h3>Episodi 1</h3>
+          <p>
+            Episodi i parë i Coddy Podcasts.
+          </p>
+          <div class="podcast-platforms">
+            <a href="https://youtu.be/F11Wfh-nx0I?si=Mw83ASL2hkKW_YKF" target="_blank" rel="noopener" class="podcast-link">▶ Dëgjo në YouTube</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="tag-row">
+            <span class="tag">Podcast</span>
+            <span class="season">YouTube</span>
+          </div>
+          <h3>Episodi 2</h3>
+          <p>
+            Episodi i dytë i Coddy Podcasts.
+          </p>
+          <div class="podcast-platforms">
+            <a href="https://youtu.be/CTLaaUyDv8U?si=rIJcMxDgV1APg0qA" target="_blank" rel="noopener" class="podcast-link">▶ Dëgjo në YouTube</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="tag-row">
+            <span class="tag">Podcast</span>
+            <span class="season">YouTube</span>
+          </div>
+          <h3>Episodi 3</h3>
+          <p>
+            Episodi i tretë i Coddy Podcasts.
+          </p>
+          <div class="podcast-platforms">
+            <a href="https://youtu.be/MdEmmt7nGDI?si=LhMdoAvXhlY3JZGc" target="_blank" rel="noopener" class="podcast-link">▶ Dëgjo në YouTube</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="tag-row">
+            <span class="tag">Podcast</span>
+            <span class="season">YouTube</span>
+          </div>
+          <h3>Episodi 4</h3>
+          <p>
+            Episodi i katërt i Coddy Podcasts.
+          </p>
+          <div class="podcast-platforms">
+            <a href="https://youtu.be/Zot27IDzw1Q?si=pZYgRIn2CARDLxaS" target="_blank" rel="noopener" class="podcast-link">▶ Dëgjo në YouTube</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="tag-row">
+            <span class="tag">Podcast</span>
+            <span class="season">YouTube</span>
+          </div>
+          <h3>Episodi 5</h3>
+          <p>
+            Episodi i pestë i Coddy Podcasts.
+          </p>
+          <div class="podcast-platforms">
+            <a href="https://youtu.be/FSfDab7eLkc?si=58S7UXVp8NM47RBb" target="_blank" rel="noopener" class="podcast-link">▶ Dëgjo në YouTube</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="tag-row">
+            <span class="tag">Podcast</span>
+            <span class="season">YouTube</span>
+          </div>
+          <h3>Episodi 6</h3>
+          <p>
+            Episodi i gjashtë i Coddy Podcasts.
+          </p>
+          <div class="podcast-platforms">
+            <a href="https://youtu.be/hZzxjrl1i3Y?si=3TSe_W9DoP9q-tLL" target="_blank" rel="noopener" class="podcast-link">▶ Dëgjo në YouTube</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="tag-row">
+            <span class="tag">Podcast</span>
+            <span class="season">YouTube</span>
+          </div>
+          <h3>Episodi 7</h3>
+          <p>
+            Së shpejti — episodi i shtatë.
+          </p>
+          <div class="podcast-platforms">
+            <span class="podcast-coming">Së shpejti</span>
+          </div>
+        </article>
+      </div>
+      <div class="gallery-close" onclick="closePodcasts()">Mbylle episodet</div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Coddy Showcase • Events
+    • <a href="index.html">Back to home</a>
+    <div class="footer-cert">
+      <span class="footer-cert-label">Certified by Google &amp; Microsoft</span>
+      <div class="footer-cert-logos">
+        <div class="footer-logo-pill">
+          <img src="images/home/google-logo.png" alt="Google logo" class="footer-logo-icon" />
+          <span>Google</span>
+        </div>
+        <div class="footer-logo-pill">
+          <img src="images/home/microsoft-logo.png" alt="Microsoft logo" class="footer-logo-icon" />
+          <span>Microsoft</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").innerText = new Date().getFullYear();
+
+    const gallerySections = [
+      document.getElementById("gallery-summer"),
+      document.getElementById("gallery-winter"),
+      document.getElementById("gallery-girls"),
+      document.getElementById("gallery-celebrations")
+    ];
+
+    const podcastSection = document.getElementById("podcast-episodes");
+
+    function hideGalleries(){
+      gallerySections.forEach(sec => sec.classList.remove("active"));
+      if(podcastSection) podcastSection.classList.remove("active");
+    }
+
+    function openPodcasts(){
+      hideGalleries();
+      if(podcastSection){
+        podcastSection.classList.add("active");
+        podcastSection.scrollIntoView({behavior:"smooth", block:"start"});
+      }
+    }
+
+    function closePodcasts(){
+      if(podcastSection) podcastSection.classList.remove("active");
+    }
+
+    function openGallery(key){
+      hideGalleries();
+      const section = document.getElementById("gallery-" + key);
+      if(section){
+        section.classList.add("active");
+        section.scrollIntoView({behavior:"smooth", block:"start"});
+      }
+    }
+
+    document.querySelectorAll(".event-card").forEach(card => {
+      card.addEventListener("click", () => {
+        const key = card.getAttribute("data-gallery");
+        if(key) openGallery(key);
+      });
+    });
+
+    document.querySelectorAll(".podcast-card").forEach(card => {
+      card.addEventListener("click", () => {
+        if(card.getAttribute("data-open") === "podcast") openPodcasts();
+      });
+    });
+
+    // Gallery sliders
+    const sliders = {};
+
+    document.querySelectorAll(".gallery-slider").forEach(slider => {
+      const key = slider.getAttribute("data-gallery-key");
+      const track = slider.querySelector(".gallery-track");
+      const slides = Array.from(slider.querySelectorAll(".gallery-slide"));
+      const dotsContainer = slider.querySelector(".gallery-dots");
+      const prevBtn = slider.querySelector('.gallery-btn[data-dir="prev"]');
+      const nextBtn = slider.querySelector('.gallery-btn[data-dir="next"]');
+
+      if (!track || slides.length === 0) return;
+
+      const state = { index: 0, total: slides.length, track, dots: [], slider };
+      sliders[key] = state;
+
+      // create dots
+      slides.forEach((_, i) => {
+        const dot = document.createElement("button");
+        dot.className = "gallery-dot" + (i === 0 ? " active" : "");
+        dot.addEventListener("click", () => moveTo(key, i));
+        dotsContainer.appendChild(dot);
+        state.dots.push(dot);
+      });
+
+      function moveTo(_, i){
+        state.index = i;
+        state.track.style.transform = "translateX(" + (-i * 100) + "%)";
+        state.dots.forEach((d, j) => d.classList.toggle("active", j === i));
+      }
+
+      if (prevBtn) {
+        prevBtn.addEventListener("click", e => {
+          e.stopPropagation();
+          const next = (state.index - 1 + state.total) % state.total;
+          moveTo(key, next);
+        });
+      }
+      if (nextBtn) {
+        nextBtn.addEventListener("click", e => {
+          e.stopPropagation();
+          const next = (state.index + 1) % state.total;
+          moveTo(key, next);
+        });
+      }
+    });
+  </script>
+</body>
+</html>
+
