@@ -421,6 +421,13 @@
       font-size: 14px;
       color: var(--text-soft);
     }
+    .about-layout{
+      margin-top:26px;
+      display:grid;
+      grid-template-columns:1.2fr 1fr;
+      gap:20px;
+      align-items:flex-start;
+    }
 
     /* Reviews slider */
     .slider{ overflow: hidden; }
@@ -964,6 +971,10 @@
       nav a{ padding: 10px 14px; margin-left: 6px; font-size: 13px; }
       .brand{ font-size: 16px; }
       .brand img{ width: 26px; height: 26px; }
+      .about-layout{
+        grid-template-columns:1fr;
+        gap:16px;
+      }
     }
 
     @media (max-width: 640px){
@@ -1419,17 +1430,17 @@
           <span class="pill">3. Portfolios</span>
           <img src="images/home/home-how-3.png" alt="Portfolios shared" />
           <div class="card-title">Portfolios are shared</div>
-          <p>Each student gets a shareable portfolio link that works for applications, family and friends.</p>
+          <p>Each student gets one link me projektet kryesore — e gatshme për prindër, shkolla dhe aplikime.</p>
         </article>
       </div>
 
-      <div style="margin-top:26px;display:grid;grid-template-columns:1.2fr 1fr;gap:20px;align-items:flex-start;">
+      <div class="about-layout">
         <div class="timeline">
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-body">
               <h3>Curated by Coddy mentors</h3>
-              <p>Every event and project is reviewed so the platform always feels polished and professional.</p>
+              <p>Mentorët e Coddy përzgjedhin eventet dhe projektet që gjithçka të duket e pastër dhe profesionale.</p>
             </div>
           </div>
 
@@ -1437,7 +1448,7 @@
             <div class="timeline-dot"></div>
             <div class="timeline-body">
               <h3>Built for sharing</h3>
-              <p>One link you can send to parents, future employers or the whole community.</p>
+              <p>Një link i vetëm që mund ta dërgosh te prindërit, shkolla ose komuniteti.</p>
             </div>
           </div>
 
@@ -1445,7 +1456,7 @@
             <div class="timeline-dot"></div>
             <div class="timeline-body">
               <h3>Always evolving</h3>
-              <p>New cohorts, new projects and new ideas keep your Coddy story feeling alive.</p>
+              <p>Grupet e reja dhe projektet e reja e mbajnë historinë tënde Coddy gjithmonë aktive.</p>
             </div>
           </div>
         </div>
@@ -1453,8 +1464,7 @@
         <div class="card">
           <div class="card-title">For students, parents and partners</div>
           <p style="margin-top:6px;">
-            Whether you’re a beginner writing your first JavaScript function or building full-stack apps, Coddy Showcase
-            gives you a modern, trustworthy home on the web. No more scattered links — just one beautiful profile.
+            Nga nxënësit që fillojnë me Scratch te ata që ndërtojnë faqe webi, Coddy Showcase mban në një vend projektet më të mira. Një profil i vetëm, i qartë dhe i lehtë për t’u ndarë.
           </p>
         </div>
       </div>
