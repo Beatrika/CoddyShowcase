@@ -870,6 +870,34 @@
       color: #e5e7eb;
       box-shadow: 0 8px 20px rgba(37,99,235,.4);
     }
+    /* Mobile: menu për muajt (dropdown), desktop: butonat */
+    .excellent-month-select{
+      display: none;
+      width: 100%;
+      max-width: 280px;
+      margin: 8px 0 14px;
+      padding: 10px 14px;
+      font-size: 14px;
+      font-family: inherit;
+      border: 1px solid rgba(148,163,184,.5);
+      border-radius: 12px;
+      background: #fff;
+      color: #0f172a;
+      cursor: pointer;
+      -webkit-appearance: none;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2364748b' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      padding-right: 36px;
+    }
+    @media (max-width: 768px){
+      .excellent-month-tabs{ display: none !important; }
+      .excellent-month-select{ display: block !important; }
+    }
+    @media (min-width: 769px){
+      .excellent-month-select{ display: none !important; }
+    }
 
     /* Footer */
     footer{
@@ -1209,6 +1237,21 @@
         </p>
 
         <hr style="margin:20px 0;border:none;border-top:1px solid rgba(148,163,184,.4);" />
+
+        <select class="excellent-month-select" id="excellent-month-select" aria-label="Zgjidh muajin" onchange="showExcellentMonth(this.value)">
+          <option value="2026-01">Janar 2026</option>
+          <option value="2026-02" selected>Shkurt 2026</option>
+          <option value="2026-03">Mars 2026</option>
+          <option value="2026-04">Prill 2026</option>
+          <option value="2026-05">Maj 2026</option>
+          <option value="2026-06">Qershor 2026</option>
+          <option value="2026-07">Korrik 2026</option>
+          <option value="2026-08">Gusht 2026</option>
+          <option value="2026-09">Shtator 2026</option>
+          <option value="2026-10">Tetor 2026</option>
+          <option value="2026-11">Nëntor 2026</option>
+          <option value="2026-12">Dhjetor 2026</option>
+        </select>
 
         <div class="excellent-month-tabs">
           <button type="button" class="excellent-month-btn" data-month="2026-01" onclick="showExcellentMonth('2026-01')">Jan 2026</button>
@@ -1693,6 +1736,9 @@
         const isActive = btn.getAttribute("data-month") === monthKey;
         btn.classList.toggle("active", isActive);
       });
+
+      const monthSelect = document.getElementById("excellent-month-select");
+      if(monthSelect) monthSelect.value = monthKey;
 
       // Initialise slider only when February block is visible
       if(monthKey === "2026-02"){
