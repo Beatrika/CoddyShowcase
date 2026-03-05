@@ -513,7 +513,9 @@
         <span class="pill-filter">Python Game Development</span>
         <span class="pill-filter">Working with Roblox Studio</span>
         <span class="pill-filter">Scratch Jr</span>
-        <span class="pill-filter">Graphic Designer</span>
+        <span class="pill-filter">Minecraft</span>
+        <span class="pill-filter">Ethical Hacking</span>
+        <span class="pill-filter">Artificial Intelligence</span>
       </div>
     </section>
 
@@ -545,10 +547,22 @@
           <div class="program-meta">First steps into coding • Ages 6–8</div>
         </article>
 
-        <article class="program-card" data-program="graphic">
-          <img src="images/portfolio/graphic.png" alt="Graphic design – student at laptop" />
-          <div class="program-name">Graphic Designer</div>
-          <div class="program-meta">Logos, posters and social media visuals</div>
+        <article class="program-card" data-program="minecraft">
+          <img src="images/portfolio/minecraft.png" alt="Minecraft – student building" />
+          <div class="program-name">Minecraft</div>
+          <div class="program-meta">Build, redstone, modding &amp; world design</div>
+        </article>
+
+        <article class="program-card" data-program="ethical-hacking">
+          <img src="images/portfolio/ethical-hacking.png" alt="Ethical Hacking – cybersecurity" />
+          <div class="program-name">Ethical Hacking</div>
+          <div class="program-meta">Cybersecurity, penetration testing basics</div>
+        </article>
+
+        <article class="program-card" data-program="ai">
+          <img src="images/portfolio/ai.png" alt="Artificial Intelligence – student project" />
+          <div class="program-name">Artificial Intelligence</div>
+          <div class="program-meta">ML basics, chatbots, image recognition</div>
         </article>
       </div>
 
@@ -711,27 +725,79 @@
         </div>
       </div>
 
-      <!-- Graphic Designer projects -->
-      <div id="program-graphic" class="program-projects" hidden>
-        <h2>Graphic Designer – student projects</h2>
+      <!-- Minecraft projects -->
+      <div id="program-minecraft" class="program-projects" hidden>
+        <h2>Minecraft – student projects</h2>
         <div class="grid">
           <article class="card">
             <div class="student-header">
               <div>
-                <div class="student-name">Blerta Shala</div>
-                <div class="project-title">Coddy Event Branding Pack</div>
+                <div class="student-name">Student projects</div>
+                <div class="project-title">Builds, worlds &amp; redstone</div>
               </div>
-              <span class="badge-program">Graphic Design • Kosovo</span>
+              <span class="badge-program">Minecraft • Coddy</span>
             </div>
-            <div class="meta-line">Final project • Logos, poster &amp; social media kit</div>
+            <div class="meta-line">Final projects • Creative builds, redstone, modding</div>
             <p class="project-desc">
-              A full mini-brand for a Coddy hackathon: logo, colours, poster and Instagram posts,
-              prepared for print and digital.
+              Projects from Coddy Minecraft students: custom worlds, redstone contraptions and creative builds.
+              Add your project here when ready.
             </p>
             <div class="project-tags">
-              <span class="tag">Logo design</span>
-              <span class="tag">Poster</span>
-              <span class="tag">Social media</span>
+              <span class="tag">Building</span>
+              <span class="tag">Redstone</span>
+              <span class="tag">World design</span>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- Ethical Hacking projects -->
+      <div id="program-ethical-hacking" class="program-projects" hidden>
+        <h2>Ethical Hacking – student projects</h2>
+        <div class="grid">
+          <article class="card">
+            <div class="student-header">
+              <div>
+                <div class="student-name">Student projects</div>
+                <div class="project-title">Cybersecurity &amp; pentesting</div>
+              </div>
+              <span class="badge-program">Ethical Hacking • Coddy</span>
+            </div>
+            <div class="meta-line">Final projects • Safe hacking, networks, security basics</div>
+            <p class="project-desc">
+              Projects from Coddy Ethical Hacking students: vulnerability reports, CTF writeups and security demos.
+              Add your project here when ready.
+            </p>
+            <div class="project-tags">
+              <span class="tag">Cybersecurity</span>
+              <span class="tag">Penetration testing</span>
+              <span class="tag">Networks</span>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- Artificial Intelligence projects -->
+      <div id="program-ai" class="program-projects" hidden>
+        <h2>Artificial Intelligence – student projects</h2>
+        <div class="grid">
+          <article class="card">
+            <div class="student-header">
+              <div>
+                <div class="student-name">Student projects</div>
+                <div class="project-title">ML, chatbots &amp; AI apps</div>
+              </div>
+              <span class="badge-program">AI • Coddy</span>
+            </div>
+            <div class="meta-line">Final projects • Machine learning, chatbots, image recognition</div>
+            <p class="project-desc">
+              Projects from Coddy Artificial Intelligence students: simple ML models, chatbots and AI-powered apps.
+              Add your project here when ready.
+            </p>
+            <div class="project-tags">
+              <span class="tag">Machine learning</span>
+              <span class="tag">Chatbots</span>
+              <span class="tag">Image recognition</span>
             </div>
           </article>
         </div>
@@ -800,7 +866,9 @@
       "python-game": document.getElementById("program-python-game"),
       roblox: document.getElementById("program-roblox"),
       scratchjr: document.getElementById("program-scratchjr"),
-      graphic: document.getElementById("program-graphic")
+      minecraft: document.getElementById("program-minecraft"),
+      "ethical-hacking": document.getElementById("program-ethical-hacking"),
+      ai: document.getElementById("program-ai")
     };
 
     function showProgram(key){

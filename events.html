@@ -307,6 +307,13 @@
       margin-bottom:10px;
     }
 
+    .gallery-hint{
+      font-size:12px;
+      color:#64748b;
+      margin:0;
+      margin-top:4px;
+    }
+
     .chip{
       font-size:11px;
       padding:4px 8px;
@@ -381,7 +388,18 @@
     }
 
     .gallery-section.active{
-      display:block;
+      display:block !important;
+    }
+    /* Excursions gallery: ensure images and track take space when visible */
+    #gallery-excursions .gallery-slider{
+      min-height:320px;
+    }
+    #gallery-excursions .gallery-track{
+      min-width:100%;
+    }
+    #gallery-excursions .gallery-slide{
+      min-width:100%;
+      flex-shrink:0;
     }
 
     .podcast-section{
@@ -417,6 +435,7 @@
       overflow:hidden;
       border-radius:16px;
       background:#020617;
+      min-height:280px;
     }
 
     .gallery-track{
@@ -437,9 +456,11 @@
       max-height:420px;
       width:auto;
       height:auto;
+      min-height:200px;
       border-radius:16px;
       object-fit:contain;
       display:block;
+      background:#0f172a;
     }
 
     .gallery-controls{
@@ -714,6 +735,7 @@
             <span class="chip">Team projects</span>
             <span class="chip">Showcase night</span>
           </div>
+          <p class="gallery-hint">Tap to see our gallery</p>
         </article>
 
         <!-- Winter Camp -->
@@ -738,6 +760,7 @@
             <span class="chip">Logic &amp; problem solving</span>
             <span class="chip">Code &amp; creativity</span>
           </div>
+          <p class="gallery-hint">Tap to see our gallery</p>
         </article>
 
         <!-- Girls in Tech -->
@@ -762,10 +785,11 @@
             <span class="chip">Community</span>
             <span class="chip">Confidence in tech</span>
           </div>
+          <p class="gallery-hint">Tap to see our gallery</p>
         </article>
 
         <!-- Trips / Excursions -->
-        <article class="card event-card">
+        <article class="card event-card" data-gallery="excursions">
           <img
             src="images/events-excursion-1.png"
             alt="Coddy students on a trip"
@@ -786,6 +810,7 @@
             <span class="chip">STEM activities</span>
             <span class="chip">Team bonding</span>
           </div>
+          <p class="gallery-hint">Tap to see our gallery</p>
         </article>
 
         <!-- Official Celebrations -->
@@ -810,6 +835,7 @@
             <span class="chip">Photo day</span>
             <span class="chip">Proud moments</span>
           </div>
+          <p class="gallery-hint">Tap to see our gallery</p>
         </article>
 
         <!-- Podcasts card -->
@@ -922,26 +948,78 @@
       <div class="gallery-close" onclick="hideGalleries()">Close gallery</div>
     </section>
 
+    <section id="gallery-excursions" class="gallery-section">
+      <div class="gallery-title">Trips &amp; Excursions gallery</div>
+      <p class="gallery-sub">Momente nga ekskursionet Coddy — muze, ekspozita, laboratorë dhe aktivitete në natyrë.</p>
+      <div class="gallery-slider" data-gallery-key="excursions">
+        <div class="gallery-track">
+          <div class="gallery-slide"><img src="images/events-excursion-1.png" alt="Coddy excursion" /></div>
+          <div class="gallery-slide"><img src="images/excursions/excursion-1.png" alt="Coddy excursion" /></div>
+          <div class="gallery-slide"><img src="images/excursions/excursion-2.png" alt="Coddy excursion" /></div>
+          <div class="gallery-slide"><img src="images/excursions/excursion-3.png" alt="Coddy excursion" /></div>
+          <div class="gallery-slide"><img src="images/excursions/excursion-4.png" alt="Coddy excursion" /></div>
+          <div class="gallery-slide"><img src="images/excursions/excursion-5.png" alt="Coddy excursion" /></div>
+          <div class="gallery-slide"><img src="images/excursions/excursion-6.png" alt="Coddy excursion" /></div>
+          <div class="gallery-slide"><img src="images/excursions/excursion-7.png" alt="Coddy excursion" /></div>
+          <div class="gallery-slide"><img src="images/excursions/excursion-8.png" alt="Coddy excursion" /></div>
+          <div class="gallery-slide"><img src="images/excursions/excursion-9.png" alt="Coddy excursion" /></div>
+          <div class="gallery-slide"><img src="images/excursions/excursion-10.png" alt="Coddy excursion" /></div>
+          <div class="gallery-slide"><img src="images/excursions/excursion-11.png" alt="Coddy excursion" /></div>
+          <div class="gallery-slide"><img src="images/excursions/excursion-12.png" alt="Coddy excursion" /></div>
+          <div class="gallery-slide"><img src="images/excursions/excursion-13.png" alt="Coddy excursion" /></div>
+          <div class="gallery-slide"><img src="images/excursions/excursion-14.png" alt="Coddy excursion" /></div>
+          <div class="gallery-slide"><img src="images/excursions/excursion-15.png" alt="Coddy excursion" /></div>
+          <div class="gallery-slide"><img src="images/excursions/excursion-16.png" alt="Coddy excursion" /></div>
+          <div class="gallery-slide"><img src="images/excursions/excursion-17.png" alt="Coddy excursion" /></div>
+          <div class="gallery-slide"><img src="images/excursions/excursion-18.png" alt="Coddy excursion" /></div>
+          <div class="gallery-slide"><img src="images/excursions/excursion-19.png" alt="Coddy excursion" /></div>
+          <div class="gallery-slide"><img src="images/excursions/excursion-20.png" alt="Coddy excursion" /></div>
+          <div class="gallery-slide"><img src="images/excursions/excursion-21.png" alt="Coddy excursion" /></div>
+          <div class="gallery-slide"><img src="images/excursions/excursion-22.png" alt="Coddy excursion" /></div>
+          <div class="gallery-slide"><img src="images/excursions/excursion-23.png" alt="Coddy excursion" /></div>
+          <div class="gallery-slide"><img src="images/excursions/excursion-24.png" alt="Coddy excursion" /></div>
+          <div class="gallery-slide"><img src="images/excursions/excursion-25.png" alt="Coddy excursion" /></div>
+          <div class="gallery-slide"><img src="images/excursions/excursion-26.png" alt="Coddy excursion" /></div>
+          <div class="gallery-slide"><img src="images/excursions/excursion-27.png" alt="Coddy excursion" /></div>
+          <div class="gallery-slide"><img src="images/excursions/excursion-28.png" alt="Coddy excursion" /></div>
+        </div>
+        <div class="gallery-controls">
+          <div class="gallery-arrows">
+            <button class="gallery-btn" data-dir="prev">‹</button>
+            <button class="gallery-btn" data-dir="next">›</button>
+          </div>
+          <div class="gallery-dots"></div>
+        </div>
+      </div>
+      <div class="gallery-close" onclick="hideGalleries()">Close gallery</div>
+    </section>
+
     <section id="gallery-girls" class="gallery-section">
       <div class="gallery-title">Girls in Tech gallery</div>
       <p class="gallery-sub">Snapshots from Girls in Tech meetups — collaboration, mentorship and inspiration.</p>
       <div class="gallery-slider" data-gallery-key="girls">
         <div class="gallery-track">
-          <div class="gallery-slide">
-            <img src="https://images.pexels.com/photos/1181533/pexels-photo-1181533.jpeg" alt="Girls learning to code together" />
-          </div>
-          <div class="gallery-slide">
-            <img src="https://images.pexels.com/photos/1181353/pexels-photo-1181353.jpeg" alt="Mentor helping a student" />
-          </div>
-          <div class="gallery-slide">
-            <img src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg" alt="Group of girls collaborating on a project" />
-          </div>
-          <div class="gallery-slide">
-            <img src="https://images.pexels.com/photos/1181268/pexels-photo-1181268.jpeg" alt="Girl typing on laptop" />
-          </div>
-          <div class="gallery-slide">
-            <img src="https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg" alt="Girls in tech discussion circle" />
-          </div>
+          <div class="gallery-slide"><img src="images/girls-in-tech/girls-in-tech-1.png" alt="Girls in Tech Coddy" /></div>
+          <div class="gallery-slide"><img src="images/girls-in-tech/girls-in-tech-2.png" alt="Girls in Tech Coddy" /></div>
+          <div class="gallery-slide"><img src="images/girls-in-tech/girls-in-tech-3.png" alt="Girls in Tech Coddy" /></div>
+          <div class="gallery-slide"><img src="images/girls-in-tech/girls-in-tech-4.png" alt="Girls in Tech Coddy" /></div>
+          <div class="gallery-slide"><img src="images/girls-in-tech/girls-in-tech-5.png" alt="Girls in Tech Coddy" /></div>
+          <div class="gallery-slide"><img src="images/girls-in-tech/girls-in-tech-6.png" alt="Girls in Tech Coddy" /></div>
+          <div class="gallery-slide"><img src="images/girls-in-tech/girls-in-tech-7.png" alt="Girls in Tech Coddy" /></div>
+          <div class="gallery-slide"><img src="images/girls-in-tech/girls-in-tech-8.png" alt="Girls in Tech Coddy" /></div>
+          <div class="gallery-slide"><img src="images/girls-in-tech/girls-in-tech-9.png" alt="Girls in Tech Coddy" /></div>
+          <div class="gallery-slide"><img src="images/girls-in-tech/girls-in-tech-10.png" alt="Girls in Tech Coddy" /></div>
+          <div class="gallery-slide"><img src="images/girls-in-tech/girls-in-tech-11.png" alt="Girls in Tech Coddy" /></div>
+          <div class="gallery-slide"><img src="images/girls-in-tech/girls-in-tech-12.png" alt="Girls in Tech Coddy" /></div>
+          <div class="gallery-slide"><img src="images/girls-in-tech/girls-in-tech-13.png" alt="Girls in Tech Coddy" /></div>
+          <div class="gallery-slide"><img src="images/girls-in-tech/girls-in-tech-14.png" alt="Girls in Tech Coddy" /></div>
+          <div class="gallery-slide"><img src="images/girls-in-tech/girls-in-tech-15.png" alt="Girls in Tech Coddy" /></div>
+          <div class="gallery-slide"><img src="images/girls-in-tech/girls-in-tech-16.png" alt="Girls in Tech Coddy" /></div>
+          <div class="gallery-slide"><img src="images/girls-in-tech/girls-in-tech-17.png" alt="Girls in Tech Coddy" /></div>
+          <div class="gallery-slide"><img src="images/girls-in-tech/girls-in-tech-18.png" alt="Girls in Tech Coddy" /></div>
+          <div class="gallery-slide"><img src="images/girls-in-tech/girls-in-tech-19.png" alt="Girls in Tech Coddy" /></div>
+          <div class="gallery-slide"><img src="images/girls-in-tech/girls-in-tech-20.png" alt="Girls in Tech Coddy" /></div>
+          <div class="gallery-slide"><img src="images/girls-in-tech/girls-in-tech-21.png" alt="Girls in Tech Coddy" /></div>
         </div>
         <div class="gallery-controls">
           <div class="gallery-arrows">
@@ -1133,17 +1211,20 @@
   <script>
     document.getElementById("year").innerText = new Date().getFullYear();
 
-    const gallerySections = [
-      document.getElementById("gallery-summer"),
-      document.getElementById("gallery-winter"),
-      document.getElementById("gallery-girls"),
-      document.getElementById("gallery-celebrations")
-    ];
-
+    // All gallery sections (summer, winter, excursions, girls, celebrations)
+    const gallerySections = Array.from(document.querySelectorAll(".gallery-section"));
     const podcastSection = document.getElementById("podcast-episodes");
 
+    // Slider state per gallery (filled when sliders init)
+    const sliders = {};
+
     function hideGalleries(){
-      gallerySections.forEach(sec => sec.classList.remove("active"));
+      gallerySections.forEach(function(sec){
+        if(sec) {
+          sec.classList.remove("active");
+          sec.style.display = "";
+        }
+      });
       if(podcastSection) podcastSection.classList.remove("active");
     }
 
@@ -1161,16 +1242,28 @@
 
     function openGallery(key){
       hideGalleries();
-      const section = document.getElementById("gallery-" + key);
-      if(section){
-        section.classList.add("active");
+      var section = document.getElementById("gallery-" + key);
+      if(!section) return;
+      section.style.display = "block";
+      section.classList.add("active");
+      var track = section.querySelector(".gallery-track");
+      if(track) track.style.transform = "translateX(0%)";
+      requestAnimationFrame(function(){
+        if(sliders[key]){
+          var s = sliders[key];
+          s.index = 0;
+          s.track.style.transform = "translateX(0%)";
+          if(s.dots && s.dots.length) {
+            s.dots.forEach(function(d, j){ d.classList.toggle("active", j === 0); });
+          }
+        }
         section.scrollIntoView({behavior:"smooth", block:"start"});
-      }
+      });
     }
 
-    document.querySelectorAll(".event-card").forEach(card => {
-      card.addEventListener("click", () => {
-        const key = card.getAttribute("data-gallery");
+    document.querySelectorAll(".event-card").forEach(function(card){
+      card.addEventListener("click", function(){
+        var key = card.getAttribute("data-gallery");
         if(key) openGallery(key);
       });
     });
@@ -1182,51 +1275,62 @@
     });
 
     // Gallery sliders
-    const sliders = {};
-
-    document.querySelectorAll(".gallery-slider").forEach(slider => {
-      const key = slider.getAttribute("data-gallery-key");
-      const track = slider.querySelector(".gallery-track");
-      const slides = Array.from(slider.querySelectorAll(".gallery-slide"));
-      const dotsContainer = slider.querySelector(".gallery-dots");
-      const prevBtn = slider.querySelector('.gallery-btn[data-dir="prev"]');
-      const nextBtn = slider.querySelector('.gallery-btn[data-dir="next"]');
+    document.querySelectorAll(".gallery-slider").forEach(function(slider){
+      var key = slider.getAttribute("data-gallery-key");
+      var track = slider.querySelector(".gallery-track");
+      var slides = Array.from(slider.querySelectorAll(".gallery-slide"));
+      var dotsContainer = slider.querySelector(".gallery-dots");
+      var prevBtn = slider.querySelector('.gallery-btn[data-dir="prev"]');
+      var nextBtn = slider.querySelector('.gallery-btn[data-dir="next"]');
 
       if (!track || slides.length === 0) return;
 
-      const state = { index: 0, total: slides.length, track, dots: [], slider };
+      var state = { index: 0, total: slides.length, track: track, dots: [], slider: slider };
       sliders[key] = state;
-
-      // create dots
-      slides.forEach((_, i) => {
-        const dot = document.createElement("button");
-        dot.className = "gallery-dot" + (i === 0 ? " active" : "");
-        dot.addEventListener("click", () => moveTo(key, i));
-        dotsContainer.appendChild(dot);
-        state.dots.push(dot);
-      });
 
       function moveTo(_, i){
         state.index = i;
         state.track.style.transform = "translateX(" + (-i * 100) + "%)";
-        state.dots.forEach((d, j) => d.classList.toggle("active", j === i));
+        state.dots.forEach(function(d, j){ d.classList.toggle("active", j === i); });
+      }
+
+      for (var i = 0; i < slides.length; i++) {
+        var dot = document.createElement("button");
+        dot.className = "gallery-dot" + (i === 0 ? " active" : "");
+        dot.setAttribute("type", "button");
+        (function(idx){
+          dot.addEventListener("click", function(){ moveTo(key, idx); });
+        })(i);
+        dotsContainer.appendChild(dot);
+        state.dots.push(dot);
       }
 
       if (prevBtn) {
-        prevBtn.addEventListener("click", e => {
+        prevBtn.addEventListener("click", function(e){
           e.stopPropagation();
-          const next = (state.index - 1 + state.total) % state.total;
+          var next = (state.index - 1 + state.total) % state.total;
           moveTo(key, next);
         });
       }
       if (nextBtn) {
-        nextBtn.addEventListener("click", e => {
+        nextBtn.addEventListener("click", function(e){
           e.stopPropagation();
-          const next = (state.index + 1) % state.total;
+          var next = (state.index + 1) % state.total;
           moveTo(key, next);
         });
       }
     });
+
+    // Open gallery from URL hash (e.g. events.html#gallery-excursions)
+    (function(){
+      var hash = window.location.hash;
+      if (hash && hash.indexOf("gallery-") === 1) {
+        var key = hash.replace("#gallery-", "");
+        if (document.getElementById("gallery-" + key)) {
+          openGallery(key);
+        }
+      }
+    })();
   </script>
 </body>
 </html>
