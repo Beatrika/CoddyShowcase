@@ -516,6 +516,7 @@
         <span class="pill-filter">Minecraft</span>
         <span class="pill-filter">Ethical Hacking</span>
         <span class="pill-filter">Artificial Intelligence</span>
+        <span class="pill-filter">Mobile App Inventor</span>
       </div>
     </section>
 
@@ -563,6 +564,12 @@
           <img src="images/portfolio/ai.png" alt="Artificial Intelligence – student project" />
           <div class="program-name">Artificial Intelligence</div>
           <div class="program-meta">ML basics, chatbots, image recognition</div>
+        </article>
+
+        <article class="program-card" data-program="mobile-app-inventor">
+          <img src="images/portfolio/mobile-app-inventor.png" alt="Mobile App Inventor – student building apps" />
+          <div class="program-name">Mobile App Inventor</div>
+          <div class="program-meta">MIT App Inventor • Build Android apps with blocks</div>
         </article>
       </div>
 
@@ -802,6 +809,32 @@
           </article>
         </div>
       </div>
+
+      <!-- Mobile App Inventor projects -->
+      <div id="program-mobile-app-inventor" class="program-projects" hidden>
+        <h2>Mobile App Inventor – student projects</h2>
+        <div class="grid">
+          <article class="card">
+            <div class="student-header">
+              <div>
+                <div class="student-name">Student projects</div>
+                <div class="project-title">Android apps built with blocks</div>
+              </div>
+              <span class="badge-program">Mobile App Inventor • Coddy</span>
+            </div>
+            <div class="meta-line">Final projects • MIT App Inventor, visual programming</div>
+            <p class="project-desc">
+              Projects from Coddy Mobile App Inventor students: games, tools and utility apps built with block-based coding.
+              Add your project here when ready.
+            </p>
+            <div class="project-tags">
+              <span class="tag">MIT App Inventor</span>
+              <span class="tag">Android</span>
+              <span class="tag">Block-based</span>
+            </div>
+          </article>
+        </div>
+      </div>
     </section>
 
     <!-- EXTRA INSPIRATION (separate from final projects) -->
@@ -868,7 +901,8 @@
       scratchjr: document.getElementById("program-scratchjr"),
       minecraft: document.getElementById("program-minecraft"),
       "ethical-hacking": document.getElementById("program-ethical-hacking"),
-      ai: document.getElementById("program-ai")
+      ai: document.getElementById("program-ai"),
+      "mobile-app-inventor": document.getElementById("program-mobile-app-inventor")
     };
 
     function showProgram(key){
