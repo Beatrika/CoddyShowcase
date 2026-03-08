@@ -549,181 +549,205 @@
     }
 
     #contact{
-      background: linear-gradient(165deg, #dbeafe 0%, #e0f2fe 45%, #bae6fd 100%);
+      background: #f1f5f9;
       border-radius: var(--radius-xl);
-      padding: 48px 36px 40px;
-      border: 1px solid rgba(59,130,246,.2);
-      box-shadow: 0 20px 56px rgba(37,99,235,.12), inset 0 1px 0 rgba(255,255,255,.4);
+      padding: 48px 40px 40px;
+      border: 1px solid rgba(15,23,42,.08);
       position: relative;
-    }
-    #contact::before{
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      background-image: radial-gradient(circle at 20% 30%, rgba(255,255,255,.25) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 70%, rgba(255,255,255,.2) 0%, transparent 45%);
-      pointer-events: none;
+      max-width: 1000px;
+      margin: 0 auto;
     }
 
-    #contact .section-header-row{ margin-bottom: 28px; position: relative; z-index: 1; }
+    #contact .section-header-row{ margin-bottom: 0; position: relative; z-index: 1; }
     #contact h2{ margin-bottom: 6px; }
     #contact .section-kicker{ font-size: 15px; color: var(--text-soft); }
-    #contact .contact-emoji-strip,
-    #contact .contact-cta-wrap,
-    #contact .contact-cards{ position: relative; z-index: 1; }
 
-    .contact-emoji-strip{
+    .contact-split{
       display: flex;
-      justify-content: center;
-      gap: 8px;
-      margin-bottom: 20px;
+      align-items: stretch;
+      gap: 0;
+      position: relative;
+      z-index: 1;
+      min-height: 280px;
     }
-    .contact-emoji-strip span{
-      font-size: 20px;
-      opacity: .85;
+    .contact-logo-side{
+      flex: 0 0 320px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 24px 32px 28px;
+      border-right: 1px solid rgba(15,23,42,.15);
     }
-
-    .contact-cta-wrap{
-      text-align: center;
+    .contact-logo-side img{
+      width: 200px;
+      height: auto;
+      max-width: 100%;
       margin-bottom: 32px;
     }
-    .contact-cta-wrap .btn.primary{
-      font-size: 16px;
-      padding: 12px 28px;
-      border-radius: 999px;
-      border: 1px solid rgba(37,99,235,.25);
-      box-shadow: 0 8px 24px rgba(37,99,235,.15);
-      transition: box-shadow .2s ease, transform .2s ease;
-    }
-    .contact-cta-wrap .btn.primary:hover{
-      box-shadow: 0 10px 28px rgba(37,99,235,.22);
-      transform: translateY(-1px);
-    }
-
-    .contact-layout{
+    .contact-social-vertical{
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 28px;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: auto;
     }
-
-    .contact-main{
-      flex: 1 1 0;
+    .contact-social-vertical a{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 18px;
+      border: 1px solid rgba(15,23,42,.2);
+      background: #fff;
+      color: var(--primary-dark);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      border-radius: 999px;
+      white-space: nowrap;
+      transition: background .2s, color .2s;
+    }
+    .contact-social-vertical a:hover{
+      background: var(--primary-dark);
+      color: #fff;
+      border-color: var(--primary-dark);
+    }
+    .contact-copyright{
+      margin-top: 20px;
+      font-size: 12px;
+      color: var(--text-soft);
+    }
+    .contact-form-side{
+      flex: 1;
+      min-width: 0;
+      padding: 24px 36px 28px;
+      display: flex;
+      flex-direction: column;
+    }
+    .contact-form-side .section-header-row{ margin-bottom: 24px; }
+    .contact-info-block{
+      flex: 1;
       display: flex;
       flex-direction: column;
       gap: 22px;
     }
-
-    .contact-cards{
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-    .contact-extra{
-      grid-column: span 2;
-      background: rgba(255,255,255,.92);
-      border-radius: 16px;
-      padding: 24px 28px;
-      box-shadow: 0 8px 28px rgba(15,23,42,.1), 0 0 0 1px rgba(255,255,255,.5) inset;
-      border: 1px solid rgba(59,130,246,.15);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      animation: contact-card-in .4s ease backwards;
-      animation-delay: .25s;
-    }
-    .contact-extra-title{
-      font-size: 16px;
+    .contact-info-item h3{
+      font-size: 12px;
       font-weight: 700;
-      color: var(--primary-dark);
-      margin-bottom: 10px;
-    }
-    .contact-extra-text{
-      font-size: 14px;
-      color: var(--text-soft);
-      line-height: 1.6;
-      margin: 0;
-    }
-    @media (max-width: 900px){
-      .contact-extra{ grid-column: 1 / -1; }
-    }
-    .contact-card{
-      background: rgba(255,255,255,.95);
-      border-radius: 16px;
-      padding: 22px 20px;
-      text-align: center;
-      box-shadow: 0 8px 28px rgba(15,23,42,.08), 0 0 0 1px rgba(255,255,255,.6) inset;
-      border: 1px solid rgba(59,130,246,.12);
-      transition: transform .2s ease, box-shadow .2s ease;
-      animation: contact-card-in .4s ease backwards;
-    }
-    .contact-card:nth-child(1){ animation-delay: .05s; }
-    .contact-card:nth-child(2){ animation-delay: .1s; }
-    .contact-card:nth-child(3){ animation-delay: .15s; }
-    .contact-card:nth-child(4){ animation-delay: .2s; }
-    .contact-card:hover{
-      transform: translateY(-3px);
-      box-shadow: 0 12px 32px rgba(15,23,42,.08);
-    }
-    .contact-card .contact-icon{
-      width: 48px;
-      height: 48px;
-      margin: 0 auto 12px;
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      background: #f1f5f9;
-      border: 1px solid rgba(148,163,184,.25);
-      transition: background .2s ease;
-    }
-    .contact-card:hover .contact-icon{
-      background: #e2e8f0;
-    }
-
-    .contact-card .contact-label{
-      font-size: 14px;
-      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
       color: var(--primary-dark);
       margin-bottom: 8px;
-      display: block;
     }
-    .contact-card .contact-label .contact-flag{
-      margin-left: 4px;
-      font-size: 1.1em;
-    }
-    .contact-card a{
-      color: var(--primary);
-      text-decoration: none;
+    .contact-info-item p,
+    .contact-info-item a{
       font-size: 14px;
-      font-weight: 500;
-      word-break: break-word;
-    }
-    .contact-card a:hover{ text-decoration: underline; }
-    .contact-card .contact-address{
-      font-size: 13px;
       color: var(--text-soft);
-      line-height: 1.45;
-      margin-top: 8px;
+      line-height: 1.55;
+      margin: 0;
+      text-decoration: none;
     }
-    .contact-card .contact-cta-btn{
-      margin-top: 12px;
+    .contact-info-item a:hover{ color: var(--primary); text-decoration: underline; }
+    .contact-social-horizontal{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+      align-items: center;
+    }
+    .contact-social-horizontal a{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       padding: 8px 16px;
-      font-size: 13px;
-      border-radius: 999px;
-      border: 1px solid rgba(37,99,235,.3);
-      background: rgba(37,99,235,.06);
+      border: 1px solid rgba(15,23,42,.2);
+      background: #fff;
       color: var(--primary-dark);
-      cursor: pointer;
-      transition: background .2s ease, color .2s ease;
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      border-radius: 999px;
+      transition: background .2s, color .2s;
     }
-    .contact-card .contact-cta-btn:hover{
-      background: var(--primary);
+    .contact-social-horizontal a:hover{
+      background: var(--primary-dark);
       color: #fff;
+      border-color: var(--primary-dark);
+    }
+    .contact-bottom-row{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: auto;
+      padding-top: 20px;
+    }
+    .contact-btn-top{
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 14px;
+      border: 1px solid rgba(15,23,42,.2);
+      background: #fff;
+      color: var(--primary-dark);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background .2s, color .2s;
+      text-decoration: none;
+    }
+    .contact-btn-top:hover{
+      background: var(--primary-dark);
+      color: #fff;
+      border-color: var(--primary-dark);
+    }
+    .contact-btn-top svg{
+      width: 14px;
+      height: 14px;
+      margin-bottom: 2px;
+    }
+    @media (max-width: 768px){
+      .contact-split{ flex-direction: column; min-height: 0; }
+      .contact-logo-side{
+        flex: none;
+        border-right: none;
+        border-bottom: 1px solid rgba(15,23,42,.12);
+        padding-bottom: 24px;
+      }
+      .contact-logo-side img{ width: 140px; margin-bottom: 20px; }
+      .contact-social-vertical{ flex-direction: row; flex-wrap: wrap; justify-content: center; margin-top: 0; }
+      .contact-copyright{ margin-top: 12px; }
+      .contact-form-side{ padding: 24px 20px; }
+      .contact-bottom-row{ flex-wrap: wrap; gap: 12px; }
     }
 
+    .contact-emoji-strip{ display: none; }
+    .contact-cta-wrap{ margin-bottom: 20px; }
+    .contact-cta-wrap .btn.primary{
+      font-size: 14px;
+      padding: 10px 22px;
+      border-radius: 999px;
+      border: 1px solid rgba(15,23,42,.2);
+      background: #fff;
+      color: var(--primary-dark);
+      box-shadow: none;
+      transition: background .2s, color .2s;
+    }
+    .contact-cta-wrap .btn.primary:hover{
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+      box-shadow: none;
+      transform: none;
+    }
+
+    .contact-layout{ display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+    .contact-main{ flex: 1 1 0; display: flex; flex-direction: column; gap: 22px; }
+    .contact-cards{ display: none; }
+    .contact-extra{ display: none; }
     .contact-photo{
       position: relative;
       overflow: hidden;
@@ -1601,53 +1625,55 @@
 
     <!-- CONTACT / GET IN TOUCH -->
     <section id="contact" class="fade-in delay-1">
-      <div class="section-header-row">
+      <div class="contact-split">
+        <div class="contact-logo-side">
+          <img src="images/logo-coddy.png" alt="Coddy" />
+          <div class="contact-social-vertical">
+            <a href="https://instagram.com/coddyshowcase" target="_blank" rel="noopener">Coddy Showcase</a>
+            <a href="https://instagram.com/coddyschool.kosova" target="_blank" rel="noopener">Coddy Kosova</a>
+            <a href="https://instagram.com/coddyschool_tirana" target="_blank" rel="noopener">Coddy Tirana</a>
+          </div>
+          <p class="contact-copyright">All rights reserved © <span id="contact-year"></span> Coddy Showcase</p>
+        </div>
+        <div class="contact-form-side">
+          <div class="section-header-row">
         <div>
           <h2>Get in touch</h2>
           <p class="section-kicker">Have a project, event or idea you’d like to feature?</p>
         </div>
       </div>
 
-      <div class="contact-emoji-strip" aria-hidden="true">
-        <span>📧</span><span>✨</span><span>🌟</span><span>💡</span><span>📬</span><span>🚀</span>
-      </div>
-
-      <div class="contact-cta-wrap">
-        <button class="btn primary" onclick="window.location.href='mailto:coddyshowcase@proton.me?subject=Coddy%20Showcase%20Submission'">
-          📧 Email your project
-        </button>
-      </div>
-
-      <div class="contact-cards">
-        <div class="contact-card">
-          <div class="contact-icon">✉️</div>
-          <span class="contact-label">Email</span>
-          <a href="mailto:coddyshowcase@proton.me">coddyshowcase@proton.me</a>
-        </div>
-        <div class="contact-card">
-          <div class="contact-icon">📷</div>
-          <span class="contact-label">Coddy Showcase</span>
-          <a href="https://instagram.com/coddyshowcase" target="_blank" rel="noopener">@coddyshowcase</a>
-          <span class="contact-address">Instagram hub for all Coddy events &amp; projects</span>
-          <button class="contact-cta-btn" onclick="window.location.href='mailto:coddyshowcase@proton.me?subject=Coddy%20Showcase%20Submission'">
-            📧 Email your project
-          </button>
-        </div>
-        <div class="contact-card">
-          <div class="contact-icon">🇦🇱</div>
-          <span class="contact-label">Coddy Tirana <span class="contact-flag" aria-hidden="true">🇦🇱</span></span>
-          <a href="https://instagram.com/coddyschool_tirana" target="_blank" rel="noopener">@coddyschool_tirana</a>
-          <span class="contact-address">Rruga Elbasanit, pranë Fakultetit të Ekonomisë</span>
-        </div>
-        <div class="contact-card">
-          <div class="contact-icon">🇽🇰</div>
-          <span class="contact-label">Coddy Kosova <span class="contact-flag" aria-hidden="true">🇽🇰</span></span>
-          <a href="https://instagram.com/coddyschool.kosova" target="_blank" rel="noopener">@coddyschool.kosova</a>
-          <span class="contact-address">Fushe Kosovë, rruga Abedin Sogujeva</span>
-        </div>
-        <div class="contact-extra">
-          <p class="contact-extra-title">We’re here to help</p>
-          <p class="contact-extra-text">Whether you want to share a student project, promote an event, or ask about Coddy programmes in Tirana or Kosovo — reach out. We’ll get back to you as soon as we can.</p>
+          <div class="contact-cta-wrap">
+            <button class="btn primary" onclick="window.location.href='mailto:coddyshowcase@proton.me?subject=Coddy%20Showcase%20Submission'">
+              Email your project
+            </button>
+          </div>
+          <div class="contact-info-block">
+            <div class="contact-info-item">
+              <h3>Coddy Showcase</h3>
+              <p><a href="mailto:coddyshowcase@proton.me">coddyshowcase@proton.me</a></p>
+              <p><a href="https://instagram.com/coddyshowcase" target="_blank" rel="noopener">@coddyshowcase</a> — Instagram hub for events &amp; projects</p>
+            </div>
+            <div class="contact-info-item">
+              <h3>Coddy Tirana — Albania</h3>
+              <p>Rruga Elbasanit, pranë Fakultetit të Ekonomisë</p>
+              <p><a href="https://instagram.com/coddyschool_tirana" target="_blank" rel="noopener">@coddyschool_tirana</a></p>
+            </div>
+            <div class="contact-info-item">
+              <h3>Coddy Kosova — Kosovo</h3>
+              <p>Fushe Kosovë, rruga Abedin Sogujeva</p>
+              <p><a href="https://instagram.com/coddyschool.kosova" target="_blank" rel="noopener">@coddyschool.kosova</a></p>
+            </div>
+          </div>
+          <div class="contact-bottom-row">
+            <div class="contact-social-horizontal">
+              <a href="https://instagram.com/coddyshowcase" target="_blank" rel="noopener">Instagram</a>
+            </div>
+            <a href="#home" class="contact-btn-top" aria-label="Back to top">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
+              Top
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -1678,7 +1704,10 @@
 
   <script>
     // Dynamic year
-    document.getElementById("year").innerText = new Date().getFullYear();
+    var y = new Date().getFullYear();
+    document.getElementById("year").innerText = y;
+    var cy = document.getElementById("contact-year");
+    if (cy) cy.innerText = y;
 
     // Simple slider
     let index = 0;
