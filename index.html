@@ -1390,10 +1390,42 @@
         </div>
 
         <div id="excellent-month-2026-03" class="excellent-month-block" style="display:none;">
-          <h3 style="font-size:16px;margin-bottom:10px;">March 2026 – Excellent students</h3>
+          <h3 style="font-size:16px;margin-bottom:10px;">March 2026 – Student of the Week</h3>
           <p style="font-size:14px;color:#475569;margin-bottom:12px;">
-            Marti do të sjellë emra të rinj nga kurset e ndryshme të Coddy. Shpejt do të publikojmë nxënësit më të dalluar për këtë muaj.
+            Urime për studentët që shkëlqyen në muajin Mars – përkushtim, kreativitet dhe rezultate të forta.
           </p>
+
+          <div class="excellent-slider">
+            <button type="button" class="excellent-arrow excellent-prev excellent-prev-march" aria-label="Previous excellent student">‹</button>
+            <div class="excellent-track">
+              <div class="excellent-track-inner" id="excellent-march-track">
+                <article class="card excellent-student-card">
+                  <img src="images/home/excellent-march-ardit.png" alt="Ardit Goxhufi – Student of the Week (Python)" style="width:100%;border-radius:14px;margin-bottom:8px;object-fit:cover;max-height:220px;" />
+                  <div class="card-title">Ardit Goxhufi</div>
+                  <p style="font-size:14px;color:#475569;margin-top:4px;">Python</p>
+                </article>
+
+                <article class="card excellent-student-card">
+                  <img src="images/home/excellent-march-klodian.png" alt="Klodian Smaili – Student of the Week (Python)" style="width:100%;border-radius:14px;margin-bottom:8px;object-fit:cover;max-height:220px;" />
+                  <div class="card-title">Klodian Smaili</div>
+                  <p style="font-size:14px;color:#475569;margin-top:4px;">Python</p>
+                </article>
+
+                <article class="card excellent-student-card">
+                  <img src="images/home/excellent-march-kron.png" alt="Kron Ternava – Student of the Week (Python)" style="width:100%;border-radius:14px;margin-bottom:8px;object-fit:cover;max-height:220px;" />
+                  <div class="card-title">Kron Ternava</div>
+                  <p style="font-size:14px;color:#475569;margin-top:4px;">Python</p>
+                </article>
+
+                <article class="card excellent-student-card">
+                  <img src="images/home/excellent-march-arnis.png" alt="Arnis Abdullahu – Student of the Week (Front End)" style="width:100%;border-radius:14px;margin-bottom:8px;object-fit:cover;max-height:220px;" />
+                  <div class="card-title">Arnis Abdullahu</div>
+                  <p style="font-size:14px;color:#475569;margin-top:4px;">Front End</p>
+                </article>
+              </div>
+            </div>
+            <button type="button" class="excellent-arrow excellent-next excellent-next-march" aria-label="Next excellent student">›</button>
+          </div>
         </div>
 
         <div id="excellent-month-2026-04" class="excellent-month-block" style="display:none;">
@@ -1769,24 +1801,34 @@
       const monthSelect = document.getElementById("excellent-month-select");
       if(monthSelect) monthSelect.value = monthKey;
 
-      // Initialise slider only when February block is visible
+      // Initialise sliders when their month is visible
       if(monthKey === "2026-02"){
-        initExcellentSlider();
+        initExcellentSlider("excellent-feb-track", ".excellent-prev", ".excellent-next");
+      }
+      if(monthKey === "2026-03"){
+        initExcellentSlider("excellent-march-track", ".excellent-prev-march", ".excellent-next-march");
       }
     }
 
-    // Simple slider for February excellent students when more than 8 cards
-    let excellentIndex = 0;
-    function initExcellentSlider(){
-      const trackInner = document.getElementById("excellent-feb-track");
+    // Generic slider initialiser for excellent-student cards.
+    function initExcellentSlider(trackInnerId, prevSelector, nextSelector){
+      const trackInner = document.getElementById(trackInnerId);
       if(!trackInner) return;
+
+      // Prevent double-binding when switching months.
+      if(trackInner.dataset.inited === "1") return;
+      trackInner.dataset.inited = "1";
+
       const cards = trackInner.querySelectorAll(".excellent-student-card");
       const total = cards.length;
-      if(total <= 8) return; // leave as static grid when 8 or less
 
-      const prev = document.querySelector(".excellent-prev");
-      const next = document.querySelector(".excellent-next");
+      if(total <= 1) return;
+
+      const prev = document.querySelector(prevSelector);
+      const next = document.querySelector(nextSelector);
       if(!prev || !next) return;
+
+      let excellentIndex = 0;
 
       function updateSlider(){
         const visible = window.innerWidth <= 640 ? 1 : (window.innerWidth <= 900 ? 2 : 4);
